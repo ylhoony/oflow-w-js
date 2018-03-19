@@ -1,0 +1,2 @@
+class NavMenuController < ApplicationController
+end
