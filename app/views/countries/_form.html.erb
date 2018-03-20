@@ -1,1 +1,43 @@
-country#form
+<%= form_with(model: country, local: true) do |f| %>
+  <% if country.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(country.errors.count, "error") %> prohibited this country from being saved:</h2>
+
+      <ul>
+      <% country.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :alpha_2_code %>
+    <%= f.text_field :alpha_2_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :alpha_3_code %>
+    <%= f.text_field :alpha_3_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :numeric_code %>
+    <%= f.text_field :numeric_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :active, "Active?" %>
+    <%= f.hidden_field :active, value: 0 %>
+    <%= f.check_box :active %><br/>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
