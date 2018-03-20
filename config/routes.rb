@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :payment_options
-  resources :payment_terms
-  resources :accounts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   root to: "nav_menu#index"
@@ -19,13 +16,22 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :companies
-  resources :employees
-  put "switch", to: "employees#switch", as: :switch_employee
 
-  resources :currencies, except: [:destroy]
-  put "switch", to: "currencies#switch", as: :switch_currency
+  put "employees/switch", to: "employees#switch", as: :switch_employee
+  resources :employees
   
+  put "currencies/switch", to: "currencies#switch", as: :switch_currency
+  resources :currencies, except: [:destroy]
+  
+  put "countries/switch", to: "countries#switch", as: :switch_country
   resources :countries, except: [:destroy]
-  put "switch", to: "countries#switch", as: :switch_country
+
+  put "payment_options/switch", to: "payment_options#switch", as: :switch_payment_option
+  resources :payment_options, except: [:destroy]
+
+  resources :payment_terms
+  put "payment_terms/switch", to: "payment_terms#switch", as: :switch_payment_term
+
+  resources :accounts
   
 end
