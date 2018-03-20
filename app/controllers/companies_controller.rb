@@ -5,7 +5,9 @@ class CompaniesController < ApplicationController
   end
 
   def new
-    
+    @company = Company.new
+    @currencies = Currency.active_currencies
+    @countries = Country.active_countries
   end
 
   def create
