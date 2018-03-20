@@ -1,12 +1,10 @@
-companies#form
-
-<%= form_with(model: company, local: true) do |form| %>
-  <% if item.errors.any? %>
+<%= form_with(model: company, local: true) do |f| %>
+  <% if company.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+      <h3><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h3>
 
       <ul>
-      <% item.errors.full_messages.each do |message| %>
+      <% company.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -14,16 +12,29 @@ companies#form
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :item_name %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price, id: :item_price %>
+    <%= f.label :currency_id, "Base Currency: " %>
+    <%= f.collection_select :currency_id, @currencies, :id, :name, prompt: true %><br/>
   </div>
 
+  <div class="field">
+    <%= f.label :country_id, "Country: " %>
+    <%= f.collection_select :country_id, @countries, :id, :name, prompt: true %><br/>
+  </div>
+
+  <%= f.hidden_field :active, value: true %>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>
+
+
+
+
+
+
