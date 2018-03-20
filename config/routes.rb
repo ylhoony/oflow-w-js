@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :companies
   root to: "nav_menu#index"
 
   get "dashboard", to: "nav_menu#dashboard"
