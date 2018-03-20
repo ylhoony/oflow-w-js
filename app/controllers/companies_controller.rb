@@ -1,7 +1,6 @@
 class CompaniesController < ApplicationController
 
   def index
-    binding.pry
     @companies = current_user.companies.all
   end
 

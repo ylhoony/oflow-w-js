@@ -1,2 +1,17 @@
 <h4>Companies List</h4>
 <p><%= link_to "Create New Company", new_company_path %></p>
+
+<% if @companies.present? %>
+  <table>
+    <tr>
+      <th>Company Name<th>
+    </tr>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.name %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>No Companies Available</p>
+<% end %>
