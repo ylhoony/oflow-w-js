@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :companies
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
   root to: "nav_menu#index"
 
   get "dashboard", to: "nav_menu#dashboard"
@@ -13,5 +14,7 @@ Rails.application.routes.draw do
   get "setup", to: "nav_menu#setup"
 
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :companies
+  
 end
