@@ -9,6 +9,8 @@
   </head>
 
   <body>
+    <%= render partial: "layouts/nav" %>
     <%= yield %>
+    <%= render partial: "layouts/flash" %>
   </body>
 </html>
