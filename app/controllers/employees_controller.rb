@@ -1,7 +1,7 @@
 class EmployeesController < ApplicationController
 
   def index
-    
+    @employees = current_company.employees.all
   end
 
   def new
@@ -22,6 +22,12 @@ class EmployeesController < ApplicationController
 
   def destroy
     
+  end
+
+  def switch
+    employee = Employee.find(params[:id])
+    employee.active? ? employee.update(active: false) : employee.update(active: true)
+    redirect_to employees_path, notice: "Status is updated successfully."
   end
 
   private
