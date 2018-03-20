@@ -1,9 +1,13 @@
 <header>
- 
     <% if user_signed_in? %>
-      <h2><%= current_company.name %></h2>
+      <% if current_user.current_company %>
+        <h2><%= current_company.name %></h2>
+      <% end %>
+
       <ul>
         <li><%= link_to "My Companies", companies_path %></li>
+
+      <% if current_user.current_company %>
         <li><%= link_to "Dashboard", dashboard_path %></li>
         <li><%= link_to "Demand", demand_path %></li>
         <li><%= link_to "Supply", supply_path %></li>
@@ -12,6 +16,8 @@
         <li><%= link_to "Logistics", logistics_path %></li>
         <li><%= link_to "Report", report_path %></li>
         <li><%= link_to "Setup", setup_path %></li>
+      <% end %>
+
         <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
     <% else %>
       <li><%= link_to "Sign in", new_user_session_path %></li>
