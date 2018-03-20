@@ -26,7 +26,15 @@
     <%= f.collection_select :country_id, @countries, :id, :name, prompt: true %><br/>
   </div>
 
-  <%= f.hidden_field :active, value: true %>
+  <% if current_page?(action: :new) %>
+    <%= f.hidden_field :active, value: true %>
+  <% elsif current_page?(action: :edit) %>
+    <div class="field">
+      <%= f.label :active, "Active?" %>
+      <%= f.hidden_field :active, value: 0 %>
+      <%= f.check_box :active %><br/>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>

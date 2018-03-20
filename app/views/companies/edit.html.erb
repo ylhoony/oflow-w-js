@@ -1,3 +1,5 @@
-<h4>Edit Company</h4>
+<h3>Edit Company</h3>
 
-<%= render partial: "companies/form" %>
+<%= render 'form', company: @company %>
+
+<%= link_to 'Back', companies_path %>
