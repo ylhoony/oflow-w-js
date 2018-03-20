@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   root to: "nav_menu#index"
@@ -17,5 +18,6 @@ Rails.application.routes.draw do
   resources :companies
   resources :employees
   resources :currencies, except: [:destroy]
+  resources :countries, except: [:destroy]
   
 end
