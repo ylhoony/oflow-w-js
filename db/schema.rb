@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20180320022318) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
-    t.integer "company_id"
+    t.integer "country_id"
     t.integer "currency_id"
     t.integer "active", default: 0
     t.datetime "created_at", null: false
