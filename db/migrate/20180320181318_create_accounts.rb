@@ -11,7 +11,7 @@ class CreateAccounts < ActiveRecord::Migration[5.1]
       t.integer :warehouse_id
       t.boolean :active, dafault: false
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
