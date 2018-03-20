@@ -22,7 +22,13 @@
         <td><%= country.alpha_3_code %></td>
         <td><%= country.numeric_code %></td>
         <td><%= check_box "country", "active", { checked: country.active, disabled: true } %></td>
-        <td>activate/deactivate</td>
+        <td>
+          <% if country.active? %>
+            <%= button_to "Deactivate", { action: "switch" }, method: :put, params: { id: country.id } %>
+          <% else %>
+            <%= button_to "Activate", { action: "switch" }, method: :put, params: { id: country.id } %>
+          <% end %>
+        </td>
         <td><%= link_to 'Edit', edit_country_path(country) %></td>
       </tr>
     <% end %>

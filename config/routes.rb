@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :companies
   resources :employees
   resources :currencies, except: [:destroy]
+
+  
   resources :countries, except: [:destroy]
+  put "switch", to: "countries#switch", as: :switch_country
   
 end

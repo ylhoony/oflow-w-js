@@ -29,6 +29,12 @@ class CountriesController < ApplicationController
     end
   end
 
+  def switch
+    country = Country.find(params[:id])
+    country.active? ? country.update(active: false) : country.update(active: true)
+    redirect_to countries_path, notice: "Status is updated successfully."
+  end
+
   private
 
     def set_country
