@@ -15,4 +15,8 @@ class User < ApplicationRecord
     Company.find(self.current_company_id) unless current_company_id.nil?
   end
 
+  # def self.without_current_employee
+  # DO THIS FOR EMPLOYEE FORM TO SHOW ONLY NON-EMPLOYEE USERS
+  # end
+
 end
