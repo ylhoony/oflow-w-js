@@ -1,4 +1,5 @@
 class CurrenciesController < ApplicationController
+  before_action :require_signed_in?
   before_action :set_currency, only: [:edit, :update]
 
   def index
@@ -19,11 +20,20 @@ class CurrenciesController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
-    
+    if @currency.update(currency_params)
+      redirect_to currencies_path
+    else
+      render :edit
+    end
+  end
+
+  def switch
+    currency = Currency.find(params[:id])
+    currency.active? ? currency.update(active: false) : currency.update(active: true)
+    redirect_to currencies_path, notice: "Status is updated successfully."
   end
 
   private

@@ -1,4 +1,5 @@
 class CountriesController < ApplicationController
+  before_action :require_signed_in?
   before_action :set_country, only: [:edit, :update]
 
   def index
