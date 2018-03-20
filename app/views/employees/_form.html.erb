@@ -14,7 +14,11 @@
 
   <div class="field">
     <%= f.label :user_id, "User: " %>
-    <%= f.collection_select :user_id, @users, :id, :email, prompt: true %><br/>
+    <% if current_page?(action: :new) %>
+      <%= f.collection_select :user_id, @users, :id, :email, prompt: true %>
+    <% else %>
+      <%= f.collection_select :user_id, @users, :id, :email, {}, { disabled: true } %>
+    <% end %>
   </div>
 
   <%= f.hidden_field :company_id, value: current_company.id %>
@@ -30,7 +34,7 @@
     <div class="field">
       <%= f.label :active, "Active?" %>
       <%= f.hidden_field :active, value: 0 %>
-      <%= f.check_box :active %><br/>
+      <%= f.check_box :active %>
     </div>
   <% end %>
 
