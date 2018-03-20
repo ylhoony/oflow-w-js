@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Currencies</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Currency Name</th>
+      <th>Alpha Code</th>
+      <th>Numeric Code</th>
+      <th>Active?</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @currencies.each do |currency| %>
+      <tr>
+        <td><%= currency.name %></td>
+        <td><%= currency.code_alpha %></td>
+        <td><%= currency.code_numeric %></td>
+        <td><%= check_box "currency", "active", { checked: currency.active, disabled: true } %></td>
+        <td>
+          <% if currency.active? %>
+            <%= button_to "Deactivate", { action: "switch" }, method: :put, params: { id: currency.id } %>
+          <% else %>
+            <%= button_to "Activate", { action: "switch" }, method: :put, params: { id: currency.id } %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Currency', new_currency_path %>
