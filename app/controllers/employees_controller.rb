@@ -12,7 +12,6 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    # raise params.inspect
     @employee = Employee.new(employee_params)
     if @employee.save
       redirect_to employees_path
