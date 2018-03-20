@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Countries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Country Name</th>
+      <th>Alpha 2 Code</th>
+      <th>Alpha 3 Code</th>
+      <th>Numeric Code</th>
+      <th>Active?</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @countries.each do |country| %>
+      <tr>
+        <td><%= country.name %></td>
+        <td><%= country.alpha_2_code %></td>
+        <td><%= country.alpha_3_code %></td>
+        <td><%= country.numeric_code %></td>
+        <td><%= check_box "country", "active", { checked: country.active, disabled: true } %></td>
+        <td>activate/deactivate</td>
+        <td><%= link_to 'Edit', edit_country_path(country) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Country', new_country_path %>
