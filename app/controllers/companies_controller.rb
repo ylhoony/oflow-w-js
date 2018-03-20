@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
   before_action :require_signed_in?
+  before_action :set_foreign_lists, only: [:new, :create, :edit, :update]
   before_action :set_company, only: [:edit, :update]
 
   def index
@@ -8,8 +9,6 @@ class CompaniesController < ApplicationController
 
   def new
     @company = Company.new
-    @currencies = Currency.active_currencies
-    @countries = Country.active_countries
   end
 
   def create
@@ -24,11 +23,14 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    
   end
 
   def update
-    
+    if @company.update(company_params)
+      redirect_to companies_path
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -38,7 +40,12 @@ class CompaniesController < ApplicationController
   private
 
     def set_company
-      
+      @company = current_user.companies.find_by(id: params[:id])
+    end
+
+    def set_foreign_lists
+      @currencies = Currency.active_currencies
+      @countries = Country.active_countries
     end
 
     def company_params
