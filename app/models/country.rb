@@ -8,9 +8,15 @@ class Country < ApplicationRecord
 
   before_save :upcase_code
 
+  def self.active_countries
+    Country.where(active: true)
+  end
+
   def upcase_code
     self.alpha_2_code.upcase!
     self.alpha_3_code.upcase!
   end
+
+  
 
 end
