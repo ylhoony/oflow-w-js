@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Employees</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Job Title</th>
+      <th>Admin?</th>
+      <th>Active?</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.full_name %></td>
+        <td><%= employee.job_title %></td>
+        <td><%= check_box "employee", "aadmin", { checked: employee.admin, disabled: true } %></td>
+        <td><%= check_box "employee", "active", { checked: employee.active, disabled: true } %></td>
+        <td>
+          <% if employee.active? %>
+            <%= button_to "Deactivate", { action: "switch" }, method: :put, params: { id: employee.id } %>
+          <% else %>
+            <%= button_to "Activate", { action: "switch" }, method: :put, params: { id: employee.id } %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Employee', new_employee_path %>
