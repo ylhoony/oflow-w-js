@@ -3,6 +3,12 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  helper_method :current_company
+
+  def current_company
+    current_user.current_company
+  end
+
   def require_signed_in?
     return redirect_to new_user_session_path unless user_signed_in?
   end
