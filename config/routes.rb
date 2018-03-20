@@ -16,6 +16,6 @@ Rails.application.routes.draw do
 
   resources :companies
   resources :employees
-  resources :currencies
+  resources :currencies, except: [:destroy]
   
 end
