@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Payment Options</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Payment Opttion Name</th>
+      <th>Active?</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payment_options.each do |payment_option| %>
+      <tr>
+        <td><%= payment_option.name %></td>
+        <td><%= check_box "option", "active", { checked: payment_option.active, disabled: true } %></td>
+        <td>
+          <% if payment_option.active? %>
+            <%= button_to "Deactivate", { action: "switch" }, method: :put, params: { id: payment_option.id } %>
+          <% else %>
+            <%= button_to "Activate", { action: "switch" }, method: :put, params: { id: payment_option.id } %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Edit', edit_payment_option_path(payment_option) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Payment Option', new_payment_option_path %>

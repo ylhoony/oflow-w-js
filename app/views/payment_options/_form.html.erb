@@ -1,0 +1,28 @@
+<%= form_with(model: payment_option, local: true) do |f| %>
+  <% if payment_option.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(payment_option.errors.count, "error") %> prohibited this payment_option from being saved:</h3>
+
+      <ul>
+      <% payment_option.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :active, "Active?" %>
+    <%= f.hidden_field :active, value: 0 %>
+    <%= f.check_box :active %><br/>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
