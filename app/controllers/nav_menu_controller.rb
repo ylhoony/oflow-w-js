@@ -1,4 +1,5 @@
 class NavMenuController < ApplicationController
+  before_action :require_signed_in?, except: [:index]
 
   def index
     if user_signed_in?
