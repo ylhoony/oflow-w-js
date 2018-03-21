@@ -1,5 +1,6 @@
 class Country < ApplicationRecord
   has_many :companies
+  has_many :warehouses
 
   validates :name, presence: true, uniqueness: true
   validates :alpha_2_code, length: { is: 2 }, presence: true, uniqueness: true
