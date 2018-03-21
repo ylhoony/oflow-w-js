@@ -30,7 +30,7 @@ class CompanyAddressesController < ApplicationController
 
   def update
     if @company_address.update(company_address_params)
-      redirect_to ompany_addresses_path
+      redirect_to company_addresses_path
     else
       render :new
     end
@@ -38,7 +38,7 @@ class CompanyAddressesController < ApplicationController
 
   def destroy
     @company_address.delete
-    redirect_to ompany_addresses_path
+    redirect_to company_addresses_path
   end
 
   private
