@@ -49,17 +49,11 @@ class CompanyContactsController < ApplicationController
     def company_contact_params
       params.require(:company_contact).permit(
         :company_id,
-        :name,
-        :attention,
-        :address_line_1,
-        :address_line_2,
-        :city,
-        :state,
-        :country_id,
-        :postal_code,
-        :phone,
+        :first_name,
+        :last_name,
         :email,
-        :fax,
+        :phone,
+        :comment,
         :active)
     end
 
