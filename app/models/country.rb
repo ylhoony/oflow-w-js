@@ -10,7 +10,7 @@ class Country < ApplicationRecord
   before_save :upcase_code
 
   def self.active_countries
-    Country.where(active: true)
+    Country.where(active: true).order(name: :asc)
   end
 
   def upcase_code
@@ -18,6 +18,5 @@ class Country < ApplicationRecord
     self.alpha_3_code.upcase!
   end
 
-  
 
 end

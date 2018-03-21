@@ -1,15 +1,23 @@
 class WarehousesController < ApplicationController
+  before_action :require_signed_in?
+  before_action :set_countries
+
 
   def index
-    
+    @warehouses = current_company.warehouses.all
   end
 
   def new
-    
+    @warehouse = Warehouse.new
   end
 
   def create
-    
+    @warehouse = Warehouse.new(warehouse_params)
+    if @warehouse.save
+      redirect_to warehouses_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -30,9 +38,29 @@ class WarehousesController < ApplicationController
 
   private
 
-    def warehouse_params
-      # params.require(:warehouse).permit(:)
+    def set_countries
+      @countries = Country.active_countries
     end
 
+    def set_warehouse
+      @warehouse = Warehouse.find(params[:id])
+    end
+
+    def warehouse_params
+      params.require(:warehouse).permit(
+        :company_id,
+        :name,
+        :attention,
+        :address_line_1,
+        :address_line_2,
+        :city,
+        :state,
+        :country_id,
+        :postal_code,
+        :email,
+        :phone,
+        :fax,
+        :active)
+    end
 
 end
