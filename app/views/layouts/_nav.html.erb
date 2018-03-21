@@ -8,14 +8,14 @@
         <li><%= link_to "My Companies", companies_path %></li>
 
       <% if current_user.current_company %>
-        <li><%= link_to "Dashboard", dashboard_path %></li>
-        <li><%= link_to "Demand", demand_path %></li>
-        <li><%= link_to "Supply", supply_path %></li>
-        <li><%= link_to "Product", product_path %></li>
-        <li><%= link_to "Warehouse", warehouse_path %></li>
-        <li><%= link_to "Logistics", logistics_path %></li>
-        <li><%= link_to "Report", report_path %></li>
-        <li><%= link_to "Setup", setup_path %></li>
+        <li><%= link_to "Dashboard", nav_dashboard_path %></li>
+        <li><%= link_to "Demand", nav_demand_path %></li>
+        <li><%= link_to "Supply", nav_supply_path %></li>
+        <li><%= link_to "Product", nav_product_path %></li>
+        <li><%= link_to "Warehouse", nav_warehouse_path %></li>
+        <li><%= link_to "Logistics", nav_logistics_path %></li>
+        <li><%= link_to "Report", nav_report_path %></li>
+        <li><%= link_to "Setup", nav_setup_path %></li>
       <% end %>
 
         <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>

@@ -4,14 +4,14 @@ Rails.application.routes.draw do
   
   root to: "nav_menu#index"
 
-  get "dashboard", to: "nav_menu#dashboard"
-  get "demand", to: "nav_menu#demand"
-  get "supply", to: "nav_menu#supply"
-  get "product", to: "nav_menu#product"
-  get "warehouse", to: "nav_menu#warehouse"
-  get "logistics", to: "nav_menu#logistics"
-  get "report", to: "nav_menu#report"
-  get "setup", to: "nav_menu#setup"
+  get "dashboard", to: "nav_menu#dashboard", as: "nav_dashboard"
+  get "demand", to: "nav_menu#demand", as: "nav_demand"
+  get "supply", to: "nav_menu#supply", as: "nav_supply"
+  get "product", to: "nav_menu#product", as: "nav_product"
+  get "warehouse", to: "nav_menu#warehouse", as: "nav_warehouse"
+  get "logistics", to: "nav_menu#logistics", as: "nav_logistics"
+  get "report", to: "nav_menu#report", as: "nav_report"
+  get "setup", to: "nav_menu#setup", as: "nav_setup"
 
   devise_for :users
 
