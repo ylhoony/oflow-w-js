@@ -1,0 +1,2 @@
+class FreightTermsController < ApplicationController
+end

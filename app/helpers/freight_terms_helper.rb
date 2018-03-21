@@ -1,0 +1,2 @@
+module FreightTermsHelper
+end
