@@ -57,9 +57,9 @@
 
 <p>
   <strong>Active?:</strong>
-  <%= check_box "warehouse", "active", { checked: @company_address.active, disabled: true } %>
+  <%= check_box "company address", "active", { checked: @company_address.active, disabled: true } %>
 </p>
 
-<%= link_to 'Edit', edit_warehouse_path(@company_address) %> |
-<%= link_to 'Delete', warehouse_path(@company_address), method: :delete %> |
-<%= link_to 'Back', warehouses_path %>
+<%= link_to 'Edit', edit_company_address_path(@company_address) %> |
+<%= link_to 'Delete', company_address_path(@company_address), method: :delete %> |
+<%= link_to 'Back', company_address_path %>
