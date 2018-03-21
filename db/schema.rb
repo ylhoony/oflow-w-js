@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180320181857) do
     t.boolean "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["type", "company_id"], name: "index_accounts_on_type_and_company_id"
   end
 
   create_table "companies", force: :cascade do |t|
