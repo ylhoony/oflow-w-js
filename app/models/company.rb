@@ -4,6 +4,7 @@ class Company < ApplicationRecord
   has_many :customers, class_name: "Customer"
   has_many :suppliers, class_name: "Supplier"
   has_many :employees
+  has_many :freight_terms
   has_many :users, through: :employees
   has_many :payment_terms
   has_many :warehouses
