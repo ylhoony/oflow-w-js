@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20180321172319) do
     t.integer "country_id"
     t.string "postal_code"
     t.string "phone"
+    t.string "email"
     t.string "fax"
     t.boolean "active", default: false
     t.datetime "created_at", null: false

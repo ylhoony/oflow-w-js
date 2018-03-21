@@ -26,4 +26,8 @@ payment_options = PaymentOption.create([{ name: "day(s) after invoice date", act
                                         { name: "of the month following invoice date", active: true },
                                         { name: "end of month", active: true },
                                         { name: "of the current month", active: true },
-                                        { name: "day(s) after the end of the invoice month", active: true }])                            
+                                        { name: "day(s) after the end of the invoice month", active: true }])
+
+company = Company.create(name: "Test Company", currency_id: 1, country_id: 1, active: true)
+company.employees.create(user_id: 1, job_title: "Director", admin: true, active: true)
+User.first.current_company = company

@@ -11,6 +11,7 @@ class CreateCompanyAddresses < ActiveRecord::Migration[5.1]
       t.integer :country_id
       t.string :postal_code
       t.string :phone
+      t.string :email
       t.string :fax
       t.boolean :active, default: false
 
