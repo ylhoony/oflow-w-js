@@ -7,7 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 users = User.create([{ first_name: "Test", last_name: "User", email: "test@test.com", password: "nononono", password_confirmation: "nononono" },
-                     {first_name: "John", last_name: "Doe", email: "jd@jd.com", password: "nononono", password_confirmation: "nononono"}])
+                     {first_name: "John", last_name: "Doe", email: "jd@jd.com", password: "nononono", password_confirmation: "nononono"},
+                     {first_name: "Paul", last_name: "Parker", email: "pp@pp.com", password: "nononono", password_confirmation: "nononono"}])
 
 currencies = Currency.create([{ name: "US Dollar", code_alpha: "USD", code_numeric: "840", active: true },
                               { name: "Australian Dollar", code_alpha: "AUD", code_numeric: "036", active: true }, 
