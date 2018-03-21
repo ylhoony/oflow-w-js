@@ -29,8 +29,8 @@ Rails.application.routes.draw do
   put "payment_options/switch", to: "payment_options#switch", as: :switch_payment_option
   resources :payment_options, except: [:destroy]
 
-  resources :payment_terms
   put "payment_terms/switch", to: "payment_terms#switch", as: :switch_payment_term
+  resources :payment_terms
 
   resources :accounts
   
