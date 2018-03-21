@@ -32,7 +32,7 @@ class PaymentOptionsController < ApplicationController
 
   def switch
     payment_option = PaymentOption.find(params[:id])
-    payment_option.active? ? PaymentOption.update(active: false) : PaymentOption.update(active: true)
+    payment_option.active? ? payment_option.update(active: false) : payment_option.update(active: true)
     redirect_to payment_options_path, notice: "Status is updated successfully."
   end
 
