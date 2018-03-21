@@ -1,0 +1,2 @@
+class CompanyAddressesController < ApplicationController
+end
