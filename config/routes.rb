@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-
-  resources :product_groups
-  resources :product_categories
-  resources :unit_of_measures
-  resources :freight_terms
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   root to: "nav_menu#index"
@@ -35,6 +31,13 @@ Rails.application.routes.draw do
 
   put "payment_terms/switch", to: "payment_terms#switch", as: :switch_payment_term
   resources :payment_terms
+
+  put "freight_terms/switch", to: "freight_terms#switch", as: :switch_freight_term 
+  resources :freight_terms
+
+  resources :product_groups
+  resources :product_categories
+  resources :unit_of_measures
 
   resources :customers
   resources :suppliers
