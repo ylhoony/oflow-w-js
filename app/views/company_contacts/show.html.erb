@@ -1,65 +1,35 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Business Name:</strong>
-  <%= @company_address.name %>
+  <strong>Name:</strong>
+  <%= @company_contact.full_name %>
 </p>
 
 <p>
-  <strong>Attention:</strong>
-  <%= @company_address.attention %>
-</p>
-
-<p>
-  <strong>Address Line 1:</strong>
-  <%= @company_address.address_line_1 %>
-</p>
-
-<p>
-  <strong>Address Line 2:</strong>
-  <%= @company_address.address_line_2 %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @company_address.city %>
-</p>
-
-<p>
-  <strong>State/Province:</strong>
-  <%= @company_address.state %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @company_address.country.name %>
-</p>
-
-<p>
-  <strong>Postal Code:</strong>
-  <%= @company_address.postal_code %>
+  <strong>Job Title:</strong>
+  <%= @company_contact.job_title %>
 </p>
 
 <p>
   <strong>Email:</strong>
-  <%= @company_address.email %>
+  <%= @company_contact.email %>
 </p>
 
 <p>
   <strong>Phone:</strong>
-  <%= @company_address.phone %>
+  <%= @company_contact.phone %>
 </p>
 
 <p>
-  <strong>Fax:</strong>
-  <%= @company_address.fax %>
+  <strong>Comment:</strong>
+  <%= @company_contact.comment %>
 </p>
 
 <p>
   <strong>Active?:</strong>
-  <%= check_box "warehouse", "active", { checked: @company_address.active, disabled: true } %>
+  <%= check_box "company contact", "active", { checked: @company_contact.active, disabled: true } %>
 </p>
 
-<%= link_to 'Edit', edit_warehouse_path(@company_address) %> |
-<%= link_to 'Delete', warehouse_path(@company_address), method: :delete %> |
-<%= link_to 'Back', warehouses_path %>
+<%= link_to 'Edit', edit_company_contact_path(@company_contact) %> |
+<%= link_to 'Delete', company_contact_path(@company_contact), method: :delete %> |
+<%= link_to 'Back', company_contact_path %>

@@ -5,28 +5,26 @@
 <table>
   <thead>
     <tr>
-      <th>Business Name</th>
-      <th>Attention</th>
-      <th>City</th>
-      <th>State/Province</th>
+      <th>Contact Name</th>
+      <th>Job Title</th>
       <th>Email</th>
       <th>Phone</th>
+      <th>Comment</th>
       <th>Active?</th>
       <th></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @company_addresses.each do |addr| %>
+    <% @company_contacts.each do |contact| %>
       <tr>
-        <td><%= link_to addr.name, company_address_path(addr) %></td>
-        <td><%= addr.attention %></td>
-        <td><%= addr.city %></td>
-        <td><%= addr.state %></td>
-        <td><%= addr.email %></td>
-        <td><%= addr.phone %></td>
-        <td><%= check_box "Company Address", "active", { checked: addr.active, disabled: true } %></td>
-        <td><%= link_to 'Edit', edit_company_address_path(addr) %></td>
+        <td><%= link_to contact.full_name, company_contact_path(contact) %></td>
+        <td><%= contact.job_title %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.phone %></td>
+        <td><%= contact.comment %></td>
+        <td><%= check_box "company contact", "active", { checked: contact.active, disabled: true } %></td>
+        <td><%= link_to 'Edit', edit_company_contact_path(contact) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Company Address', new_company_address_path %>
+<%= link_to 'New Company Contact', new_company_contact_path %>

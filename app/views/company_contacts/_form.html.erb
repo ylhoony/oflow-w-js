@@ -1,10 +1,10 @@
-<%= form_with(model: addr, local: true) do |f| %>
-  <% if addr.errors.any? %>
+<%= form_with(model: contact, local: true) do |f| %>
+  <% if contact.errors.any? %>
     <div id="error_explanation">
-      <h3><%= pluralize(addr.errors.count, "error") %> prohibited this addr from being saved:</h3>
+      <h3><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h3>
 
       <ul>
-      <% addr.errors.full_messages.each do |message| %>
+      <% contact.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -14,44 +14,20 @@
   <%= f.hidden_field :company_id, value: current_company.id %>
 
   <div class="field">
-    <%= f.label :name, "Business Name: " %>
-    <%= f.text_field :name %>
+    <%= f.label :first_name, "First Name: " %>
+    <%= f.text_field :first_name %>
   </div>
 
   <div class="field">
-    <%= f.label :attention, "Attention: " %>
-    <%= f.text_field :attention %>
+    <%= f.label :last_name, "Last Name: " %>
+    <%= f.text_field :last_name %>
   </div>
 
   <div class="field">
-    <%= f.label :address_line_1, "Address Line 1: " %>
-    <%= f.text_field :address_line_1 %>
+    <%= f.label :job_title, "Job Title: " %>
+    <%= f.text_field :job_title %>
   </div>
 
-  <div class="field">
-    <%= f.label :address_line_2, "Address Line 2: " %>
-    <%= f.text_field :address_line_2 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :city, "City: " %>
-    <%= f.text_field :city %>
-  </div>
-
-  <div class="field">
-    <%= f.label :state, "State/Province: " %>
-    <%= f.text_field :state %>
-  </div>
-
-  <div class="field">
-    <%= f.label :country_id, "Country: " %>
-    <%= f.collection_select :country_id, @countries, :id, :name, prompt: true %><br/>
-  </div>
-
-  <div class="field">
-    <%= f.label :postal_code, "Postal Code: " %>
-    <%= f.text_field :postal_code %>
-  </div>
 
   <div class="field">
     <%= f.label :email, "Email: " %>
@@ -64,8 +40,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :fax, "Fax: " %>
-    <%= f.text_field :fax %>
+    <%= f.label :comment, "Comment: " %>
+    <%= f.text_area :comment %>
   </div>  
 
   <div class="field">
