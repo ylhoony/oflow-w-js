@@ -3,6 +3,8 @@ class Company < ApplicationRecord
   belongs_to :currency
   has_many :customers, class_name: "Customer"
   has_many :suppliers, class_name: "Supplier"
+  has_many :company_addresses
+  has_many :company_contacts
   has_many :employees
   has_many :freight_terms
   has_many :users, through: :employees
