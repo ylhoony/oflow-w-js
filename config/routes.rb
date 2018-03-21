@@ -35,12 +35,13 @@ Rails.application.routes.draw do
   put "freight_terms/switch", to: "freight_terms#switch", as: :switch_freight_term 
   resources :freight_terms
 
-  put "product_categories/switch", to: "product_categories#switch", as: :switch_product_category 
+  put "product_categories/switch", to: "product_categories#switch", as: :switch_product_category
   resources :product_categories
 
-  put "product_groups/switch", to: "product_groups#switch", as: :switch_product_groups
+  put "product_groups/switch", to: "product_groups#switch", as: :switch_product_group
   resources :product_groups
 
+  put "unit_of_measures/switch", to: "unit_of_measures#switch", as: :switch_unit_of_measure
   resources :unit_of_measures
 
   resources :customers
