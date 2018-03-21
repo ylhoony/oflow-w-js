@@ -1,7 +1,7 @@
 class WarehousesController < ApplicationController
   before_action :require_signed_in?
   before_action :set_countries, except: [:index, :destroy]
-  before_action :set_warehouse, only: [:show, :edit, :update]
+  before_action :set_warehouse, only: [:show, :edit, :update, :destroy]
 
   def index
     @warehouses = current_company.warehouses.all
@@ -37,7 +37,8 @@ class WarehousesController < ApplicationController
   end
 
   def destroy
-
+    @warehouse.delete
+    redirect_to warehouses_path
   end
 
   private
