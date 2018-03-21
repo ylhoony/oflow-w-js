@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321080313) do
+ActiveRecord::Schema.define(version: 20180321080612) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "type"
@@ -87,6 +87,14 @@ ActiveRecord::Schema.define(version: 20180321080313) do
     t.integer "trade_credit_days", default: 0
     t.integer "date_days", default: 0
     t.integer "payment_option_id"
+    t.boolean "active", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "unit_of_measures", force: :cascade do |t|
+    t.string "name"
+    t.integer "company_id"
     t.boolean "active", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
