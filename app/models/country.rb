@@ -1,5 +1,6 @@
 class Country < ApplicationRecord
   has_many :companies
+  has_many :company_addresses
   has_many :warehouses
 
   validates :name, presence: true, uniqueness: true
