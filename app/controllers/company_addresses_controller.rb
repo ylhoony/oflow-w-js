@@ -12,7 +12,7 @@ class CompanyAddressesController < ApplicationController
   end
 
   def create
-    @company_address = CompanyAddress.new(comapny_address_params)
+    @company_address = CompanyAddress.new(company_address_params)
     if @company_address.save
       redirect_to company_addresses_path
     else
@@ -29,7 +29,7 @@ class CompanyAddressesController < ApplicationController
   end
 
   def update
-    if @company_address.update(comapny_address_params)
+    if @company_address.update(company_address_params)
       redirect_to ompany_addresses_path
     else
       render :new
