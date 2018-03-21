@@ -1,0 +1,31 @@
+<%= form_with(model: uom, local: true) do |f| %>
+  <% if uom.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(uom.errors.count, "error") %> prohibited this uom from being saved:</h3>
+
+      <ul>
+      <% uom.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, "Unit of Measure Name: " %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.hidden_field :company_id, value: current_company.id %>
+
+  <div class="field">
+    <%= f.label :active, "Active?" %>
+    <%= f.hidden_field :active, value: 0 %>
+    <%= f.check_box :active %><br/>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+

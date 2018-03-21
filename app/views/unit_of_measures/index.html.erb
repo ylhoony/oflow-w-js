@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Unit of Measures</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>UOM Name</th>
+      <th>Active?</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @unit_of_measures.each do |uom| %>
+      <tr>
+        <td><%= uom.name %></td>
+        <td><%= check_box "uom", "active", { checked: uom.active, disabled: true } %></td>
+        <td>
+          <% if uom.active? %>
+            <%= button_to "Deactivate", { action: "switch" }, method: :put, params: { id: uom.id } %>
+          <% else %>
+            <%= button_to "Activate", { action: "switch" }, method: :put, params: { id: uom.id } %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Edit', edit_unit_of_measure_path(uom) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Unit of Measure', new_unit_of_measure_path %>
