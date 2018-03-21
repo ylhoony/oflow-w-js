@@ -33,5 +33,8 @@ Rails.application.routes.draw do
   resources :payment_terms
 
   resources :accounts
+
+  resources :customers
+  resources :suppliers
   
 end
