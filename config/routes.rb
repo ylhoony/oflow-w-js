@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  
-  resources :warehouses
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   root to: "nav_menu#index"
@@ -33,9 +32,8 @@ Rails.application.routes.draw do
   put "payment_terms/switch", to: "payment_terms#switch", as: :switch_payment_term
   resources :payment_terms
 
-  resources :accounts
-
   resources :customers
   resources :suppliers
+  resources :warehouses
   
 end
