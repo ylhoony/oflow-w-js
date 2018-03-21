@@ -1,7 +1,7 @@
 class WarehousesController < ApplicationController
   before_action :require_signed_in?
-  before_action :set_countries
-
+  before_action :set_countries, except: [:index, :destroy]
+  before_action :set_warehouse, only: [:show, :edit, :update]
 
   def index
     @warehouses = current_company.warehouses.all
@@ -29,7 +29,11 @@ class WarehousesController < ApplicationController
   end
 
   def update
-    
+    if @warehouse.update(warehouse_params)
+      redirect_to warehouses_path
+    else
+      render :new
+    end
   end
 
   def destroy
