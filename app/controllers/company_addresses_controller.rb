@@ -63,6 +63,7 @@ class CompanyAddressesController < ApplicationController
         :country_id,
         :postal_code,
         :phone,
+        :email,
         :fax,
         :active)
     end

@@ -9,6 +9,7 @@
       <th>Attention</th>
       <th>City</th>
       <th>State/Province</th>
+      <th>Email</th>
       <th>Phone</th>
       <th>Active?</th>
       <th></th>
@@ -22,6 +23,7 @@
         <td><%= addr.attention %></td>
         <td><%= addr.city %></td>
         <td><%= addr.state %></td>
+        <td><%= addr.email %></td>
         <td><%= addr.phone %></td>
         <td><%= check_box "Company Address", "active", { checked: addr.active, disabled: true } %></td>
         <td><%= link_to 'Edit', edit_company_address_path(addr) %></td>
