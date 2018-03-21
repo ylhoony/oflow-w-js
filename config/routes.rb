@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :product_categories
   resources :unit_of_measures
   resources :freight_terms
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
