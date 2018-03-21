@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Payment Terms</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Payment Term Name</th>
+      <th>Date or Net Days</th>
+      <th>Payment Option</th>
+      <th>Trade Credit Percentage</th>
+      <th>Trade Credit Days</th>
+      <th>Active?</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @payment_terms.each do |payment_term| %>
+      <tr>
+        <td><%= payment_term.name %></td>
+        <td><%= payment_term.date_days %></td>
+        <td><%= payment_term.payment_option.name %></td>
+        <td><%= payment_term.trade_credit_percent %></td>
+        <td><%= payment_term.trade_credit_days %></td>
+        <td><%= check_box "payment_term", "active", { checked: payment_term.active, disabled: true } %></td>
+        <td>
+          <% if payment_term.active? %>
+            <%= button_to "Deactivate", { action: "switch" }, method: :put, params: { id: payment_term.id } %>
+          <% else %>
+            <%= button_to "Activate", { action: "switch" }, method: :put, params: { id: payment_term.id } %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Edit', edit_payment_term_path(payment_term) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Payment Term', new_payment_term_path %>
