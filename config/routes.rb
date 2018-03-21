@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :product_groups
   resources :product_categories
   resources :unit_of_measures
   resources :freight_terms
