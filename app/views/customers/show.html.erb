@@ -38,3 +38,8 @@
 <%= link_to 'Edit', edit_customer_path(@customer) %> |
 <%= link_to 'Delete', customer_path(@customer), method: :delete %> |
 <%= link_to 'Back', customers_path %>
+<br/>
+
+<%= link_to 'Show Customer Addresses', customer_account_addresses_path(@customer) %> |
+<%= link_to 'New Customer Address', new_customer_account_address_path(@customer) %>
+
