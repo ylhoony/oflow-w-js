@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Product Groups</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product SKU</th>
+      <th>Product Name</th>
+      <th>Unit of Measure</th>
+      <th>Sales Price</th>
+      <th>Product Category Name</th>
+      <th>Product Group Name</th>
+      <th>Active?</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.sku %></td>
+        <td><%= product.name %></td>
+        <td><%= product.unit_of_measure.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.product_group.product_category.name %></td>
+        <td><%= product.product_group.name %></td>
+        <td><%= check_box "product", "active", { checked: product.active, disabled: true } %></td>
+        <td>
+          <% if product.active? %>
+            <%= button_to "Deactivate", { action: "switch" }, method: :put, params: { id: product.id } %>
+          <% else %>
+            <%= button_to "Activate", { action: "switch" }, method: :put, params: { id: product.id } %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>
