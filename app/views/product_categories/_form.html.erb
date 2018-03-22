@@ -24,15 +24,19 @@
     <%= f.check_box :active %><br/>
   </div>
 
-  <h4>New Product Group (Optional)</h4>
+  <% if current_page?(action: :new) %>
 
-  <%= f.fields_for :product_groups, @product_category.product_groups.build do |group| %>
-    <div class="field">
-      <%= group.label :name, "Product Group Name: "%>
-      <%= group.text_field :name %>
-    </div>
+    <h4>New Product Group (Optional)</h4>
 
-    <%= group.hidden_field :active, value: true %>
+    <%= f.fields_for :product_groups, @product_category.product_groups.build do |group| %>
+      <div class="field">
+        <%= group.label :name, "Product Group Name: "%>
+        <%= group.text_field :name %>
+      </div>
+
+      <%= group.hidden_field :active, value: true %>
+
+    <% end %>
 
   <% end %>
 
