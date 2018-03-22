@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Customers</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company Name</th>
+      <th>Transaction Currency</th>
+      <th>Payment Term</th>
+      <th>Ship From Warehouse</th>
+      <th>Comment</th>
+      <th>Active?</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= link_to customer.name, customer_path(customer) %></td>
+        <td><%= customer.currency.name %></td>
+        <td><%= customer.payment_term.name %></td>
+        <td><%= customer.warehouse.name %></td>
+        <td><%= customer.comment %></td>
+        <td><%= check_box "customer", "active", { checked: customer.active, disabled: true } %></td>
+        <td><%= link_to 'Edit', edit_customer_path(customer) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer', new_customer_path %>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer Name:</strong>
+  <%= @customer.name %>
+</p>
+
+<p>
+  <strong>Tax ID Number:</strong>
+  <%= @customer.tax_id_number %>
+</p>
+
+<p>
+  <strong>Transaction Currency:</strong>
+  <%= @customer.currency.name %>
+</p>
+
+<p>
+  <strong>Payment Term:</strong>
+  <%= @customer.payment_term.name %>
+</p>
+
+<p>
+  <strong>Default Ship From Warehouse:</strong>
+  <%= @customer.warehouse.name %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @customer.comment %>
+</p>
+
+<p>
+  <strong>Active?:</strong>
+  <%= check_box "customer", "active", { checked: @customer.active, disabled: true } %>
+</p>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Delete', customer_path(@customer), method: :delete %> |
+<%= link_to 'Back', customers_path %>
