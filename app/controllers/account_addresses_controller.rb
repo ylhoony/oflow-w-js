@@ -14,7 +14,8 @@ class AccountAddressesController < ApplicationController
   def create
     @account_address = @account.account_addresses.build(account_address_params)
     if @account_address.save
-      redirect_to customer_path(@account)
+      redirect_to customer_path(@account) if @account.class.eql?(Customer)
+      redirect_to supplier_path(@account) if @account.class.eql?(Supplier)
     else
       render :new
     end
@@ -28,7 +29,8 @@ class AccountAddressesController < ApplicationController
 
   def update
     if @account_address.update(account_address_params)
-      redirect_to customer_account_address_path(@account, @account_address)
+      redirect_to customer_account_address_path(@account, @account_address) if @account.class.eql?(Customer)
+      redirect_to supplier_account_address_path(@account, @account_address) if @account.class.eql?(Supplier)
     else
       render :edit
     end
@@ -42,7 +44,11 @@ class AccountAddressesController < ApplicationController
   private
 
     def set_account
-      @account = Account.find(params[:customer_id])
+      if params[:customer_id].present?
+        @account = Customer.find(params[:customer_id])
+      elsif params[:supplier_id].present?
+        @account = Supplier.find(params[:supplier_id])
+      end
     end
 
     def set_account_address
