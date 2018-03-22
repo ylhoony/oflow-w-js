@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Company Addresses</h3>
+<h3>Customer Addresses for </h3>
 
 <table>
   <thead>
@@ -17,16 +17,16 @@
   </thead>
 
   <tbody>
-    <% @company_addresses.each do |addr| %>
+    <% @account_addresses.each do |addr| %>
       <tr>
-        <td><%= link_to addr.name, company_address_path(addr) %></td>
+        <td><%= link_to addr.company_name, company_address_path(addr) %></td>
         <td><%= addr.attention %></td>
         <td><%= addr.city %></td>
         <td><%= addr.state %></td>
         <td><%= addr.email %></td>
         <td><%= addr.phone %></td>
         <td><%= check_box "company address", "active", { checked: addr.active, disabled: true } %></td>
-        <td><%= link_to 'Edit', edit_company_address_path(addr) %></td>
+        <td><%= link_to 'Edit', edit_customer_account_address_path(@account, addr) %></td>
       </tr>
     <% end %>
   </tbody>
