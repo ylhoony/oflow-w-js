@@ -1,1 +1,35 @@
-suppliers#index
+<p id="notice"><%= notice %></p>
+
+<h3>Suppliers</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company Name</th>
+      <th>Transaction Currency</th>
+      <th>Payment Term</th>
+      <th>Ship To Warehouse</th>
+      <th>Comment</th>
+      <th>Active?</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @suppliers.each do |supplier| %>
+      <tr>
+        <td><%= link_to supplier.name, supplier_path(supplier) %></td>
+        <td><%= supplier.currency.name %></td>
+        <td><%= supplier.payment_term.name %></td>
+        <td><%= supplier.warehouse.name %></td>
+        <td><%= supplier.comment %></td>
+        <td><%= check_box "supplier", "active", { checked: supplier.active, disabled: true } %></td>
+        <td><%= link_to 'Edit', edit_supplier_path(supplier) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Supplier', new_supplier_path %>

@@ -1,1 +1,40 @@
-suppliers#show
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Supplier Name:</strong>
+  <%= @supplier.name %>
+</p>
+
+<p>
+  <strong>Tax ID Number:</strong>
+  <%= @supplier.tax_id_number %>
+</p>
+
+<p>
+  <strong>Transaction Currency:</strong>
+  <%= @supplier.currency.name %>
+</p>
+
+<p>
+  <strong>Payment Term:</strong>
+  <%= @supplier.payment_term.name %>
+</p>
+
+<p>
+  <strong>Default Ship To Warehouse:</strong>
+  <%= @supplier.warehouse.name %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @supplier.comment %>
+</p>
+
+<p>
+  <strong>Active?:</strong>
+  <%= check_box "supplier", "active", { checked: @supplier.active, disabled: true } %>
+</p>
+
+<%= link_to 'Edit', edit_supplier_path(@supplier) %> |
+<%= link_to 'Delete', supplier_path(@supplier), method: :delete %> |
+<%= link_to 'Back', suppliers_path %>
