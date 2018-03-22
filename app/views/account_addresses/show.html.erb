@@ -2,64 +2,64 @@
 
 <p>
   <strong>Business Name:</strong>
-  <%= @company_address.name %>
+  <%= @account_address.company_name %>
 </p>
 
 <p>
   <strong>Attention:</strong>
-  <%= @company_address.attention %>
+  <%= @account_address.attention %>
 </p>
 
 <p>
   <strong>Address Line 1:</strong>
-  <%= @company_address.address_line_1 %>
+  <%= @account_address.address_line_1 %>
 </p>
 
 <p>
   <strong>Address Line 2:</strong>
-  <%= @company_address.address_line_2 %>
+  <%= @account_address.address_line_2 %>
 </p>
 
 <p>
   <strong>City:</strong>
-  <%= @company_address.city %>
+  <%= @account_address.city %>
 </p>
 
 <p>
   <strong>State/Province:</strong>
-  <%= @company_address.state %>
+  <%= @account_address.state %>
 </p>
 
 <p>
   <strong>Country:</strong>
-  <%= @company_address.country.name %>
+  <%= @account_address.country.name %>
 </p>
 
 <p>
   <strong>Postal Code:</strong>
-  <%= @company_address.postal_code %>
+  <%= @account_address.postal_code %>
 </p>
 
 <p>
   <strong>Email:</strong>
-  <%= @company_address.email %>
+  <%= @account_address.email %>
 </p>
 
 <p>
   <strong>Phone:</strong>
-  <%= @company_address.phone %>
+  <%= @account_address.phone %>
 </p>
 
 <p>
   <strong>Fax:</strong>
-  <%= @company_address.fax %>
+  <%= @account_address.fax %>
 </p>
 
 <p>
   <strong>Active?:</strong>
-  <%= check_box "company address", "active", { checked: @company_address.active, disabled: true } %>
+  <%= check_box "company address", "active", { checked: @account_address.active, disabled: true } %>
 </p>
 
-<%= link_to 'Edit', edit_company_address_path(@company_address) %> |
-<%= link_to 'Delete', company_address_path(@company_address), method: :delete %> |
-<%= link_to 'Back', company_address_path %>
+<%= link_to 'Edit', edit_customer_account_address_path(@account, @account_address) %> |
+<%= link_to 'Delete', customer_account_address_path(@account, @account_address), method: :delete %> |
+<%= link_to 'Back', customer_account_addresses_path(@account) %>

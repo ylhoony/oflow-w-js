@@ -19,7 +19,7 @@
   <tbody>
     <% @account_addresses.each do |addr| %>
       <tr>
-        <td><%= link_to addr.company_name, company_address_path(addr) %></td>
+        <td><%= link_to addr.company_name, customer_account_address_path(@account, addr) %></td>
         <td><%= addr.attention %></td>
         <td><%= addr.city %></td>
         <td><%= addr.state %></td>

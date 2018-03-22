@@ -1,7 +1,7 @@
 class AccountAddressesController < ApplicationController
   before_action :require_signed_in?
   before_action :set_account
-  before_action :set_supplier, only: [:show, :edit, :update, :destroy]
+  before_action :set_account_address, only: [:show, :edit, :update, :destroy]
 
   def index
     @account_addresses = @account.account_addresses.all
@@ -21,25 +21,32 @@ class AccountAddressesController < ApplicationController
   end
 
   def show
-    
   end
 
   def edit
-    @account_address = @account.account_addresses
   end
 
   def update
-    
+    if @account_address.update(account_address_params)
+      redirect_to customer_account_address_path(@account, @account_address)
+    else
+      render :edit
+    end
   end
 
   def destroy
-    
+    @account_address.delete
+    redirect_to customer_account_addresses_path(@account)
   end
 
   private
 
     def set_account
       @account = Account.find(params[:customer_id])
+    end
+
+    def set_account_address
+      @account_address = @account.account_addresses.find { |addr| params[:id].to_i == addr.id }
     end
 
     def account_address_params
