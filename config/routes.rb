@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :account_addresses
-  resources :company_contacts
-  resources :company_addresses
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   root to: "nav_menu#index"
@@ -19,6 +16,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :companies
+  resources :company_contacts
+  resources :company_addresses
 
   put "employees/switch", to: "employees#switch", as: :switch_employee
   resources :employees
@@ -47,8 +46,14 @@ Rails.application.routes.draw do
   put "unit_of_measures/switch", to: "unit_of_measures#switch", as: :switch_unit_of_measure
   resources :unit_of_measures
 
-  resources :customers
-  resources :suppliers
+  resources :customers do 
+    resources :account_addresses
+  end
+
+  resources :suppliers do
+    resources :account_addresses
+  end
+
   resources :warehouses
   
 end
