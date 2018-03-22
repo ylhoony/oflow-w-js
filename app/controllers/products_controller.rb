@@ -28,6 +28,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    # raise params.inspect
     if @product.update(product_params)
       redirect_to products_path
     else
@@ -53,18 +54,11 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(
         :company_id,
+        :product_group_id,
+        :sku,
         :name,
-        :attention,
-        :address_line_1,
-        :address_line_2,
-        :city,
-        :state,
-        :country_id,
-        :postal_code,
-        :email,
-        :phone,
-        :fax,
-        :active)
+        :price,
+        :unit_of_measure_id)
       end
 
 end
