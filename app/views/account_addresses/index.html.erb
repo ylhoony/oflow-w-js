@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Company Addresses</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Business Name</th>
+      <th>Attention</th>
+      <th>City</th>
+      <th>State/Province</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Active?</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @company_addresses.each do |addr| %>
+      <tr>
+        <td><%= link_to addr.name, company_address_path(addr) %></td>
+        <td><%= addr.attention %></td>
+        <td><%= addr.city %></td>
+        <td><%= addr.state %></td>
+        <td><%= addr.email %></td>
+        <td><%= addr.phone %></td>
+        <td><%= check_box "company address", "active", { checked: addr.active, disabled: true } %></td>
+        <td><%= link_to 'Edit', edit_company_address_path(addr) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Company Address', new_company_address_path %>
