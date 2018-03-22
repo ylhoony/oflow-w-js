@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Customer Addresses for </h3>
+<h3><%= @account.type %> Addresses for <%= @account.name %></h3>
 
 <table>
   <thead>
@@ -19,14 +19,25 @@
   <tbody>
     <% @account_addresses.each do |addr| %>
       <tr>
-        <td><%= link_to addr.company_name, customer_account_address_path(@account, addr) %></td>
+        <td>
+          <% if addr.account.class == Customer %>
+            <%= link_to addr.company_name, customer_account_address_path(@account, addr) %>
+          <% elsif addr.account.class == Supplier %>
+            <%= link_to addr.company_name, supplier_account_address_path(@account, addr) %>
+          <% end %>
+        </td>
         <td><%= addr.attention %></td>
         <td><%= addr.city %></td>
         <td><%= addr.state %></td>
         <td><%= addr.email %></td>
         <td><%= addr.phone %></td>
         <td><%= check_box "company address", "active", { checked: addr.active, disabled: true } %></td>
-        <td><%= link_to 'Edit', edit_customer_account_address_path(@account, addr) %></td>
+        <td>
+          <% if addr.account.class == Customer %>
+            <%= link_to 'Edit', edit_customer_account_address_path(@account, addr) %></td>
+          <% elsif addr.account.class == Supplier %>
+            <%= link_to 'Edit', edit_supplier_account_address_path(@account, addr) %></td>
+          <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +45,16 @@
 
 <br>
 
-<%= link_to 'New Company Address', new_company_address_path %>
+<% if @account.class == Customer %>
+  <%= link_to 'New Customer Address', customer_account_addresses_path(@account) %>
+<% elsif @account.class == Supplier %>
+  <%= link_to 'New Supplier Address', supplier_account_addresses_path(@account) %>
+<% end %>
+
+<br/>
+
+<% if @account.class == Customer %>
+  <%= link_to 'Back', customer_path(@account) %>
+<% elsif @account.class == Supplier %>
+  <%= link_to 'Back', supplier_path(@account) %>
+<% end %>

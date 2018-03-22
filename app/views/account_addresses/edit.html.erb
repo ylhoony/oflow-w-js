@@ -1,5 +1,9 @@
-<h3>New Customer Address for <%= @account.name %></h3>
+<h3>New <%= @account.type %> Address for <%= @account.name %></h3>
 
 <%= render 'form', addr: @account_address %>
 
-<%= link_to 'Back', customer_account_addresses_path(@account) %>
+<% if @account.type == "Customer"%>
+  <%= link_to 'Back', customer_account_addresses_path(@account) %>
+<% elsif @account.type == "Supplier"%>
+  <%= link_to 'Back', supplier_account_addresses_path(@account) %>
+<% end %>

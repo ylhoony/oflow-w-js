@@ -60,6 +60,13 @@
   <%= check_box "company address", "active", { checked: @account_address.active, disabled: true } %>
 </p>
 
-<%= link_to 'Edit', edit_customer_account_address_path(@account, @account_address) %> |
-<%= link_to 'Delete', customer_account_address_path(@account, @account_address), method: :delete %> |
-<%= link_to 'Back', customer_account_addresses_path(@account) %>
+
+<% if @account.class == Customer %>
+  <%= link_to 'Edit', edit_customer_account_address_path(@account, @account_address) %> |
+  <%= link_to 'Delete', customer_account_address_path(@account, @account_address), method: :delete %> |
+  <%= link_to 'Back', customer_account_addresses_path(@account) %>
+<% elsif @account.class == Supplier %>
+  <%= link_to 'Edit', edit_supplier_account_address_path(@account, @account_address) %> |
+  <%= link_to 'Delete', supplier_account_address_path(@account, @account_address), method: :delete %> |
+  <%= link_to 'Back', supplier_account_addresses_path(@account) %>
+<% end %>
