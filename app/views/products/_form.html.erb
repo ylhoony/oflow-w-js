@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :company_id, value: current_company.id %>
+
   <div class="field">
     <%= f.label :sku, "Product SKU: " %>
     <%= f.text_field :sku %>
@@ -32,15 +34,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :name, "Product Name: " %>
-    <%= f.text_field :name %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :active, "Active?" %>
-    <%= f.hidden_field :active, value: 0 %>
-    <%= f.check_box :active %><br/>
+    <%= f.label :price, "Sales Price: " %>
+    <%= f.number_field :price, step: 0.01 %>
   </div>
 
   <div class="actions">

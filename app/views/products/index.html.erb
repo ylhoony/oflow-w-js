@@ -11,7 +11,6 @@
       <th>Sales Price</th>
       <th>Product Category Name</th>
       <th>Product Group Name</th>
-      <th>Active?</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -25,14 +24,6 @@
         <td><%= product.price %></td>
         <td><%= product.product_group.product_category.name %></td>
         <td><%= product.product_group.name %></td>
-        <td><%= check_box "product", "active", { checked: product.active, disabled: true } %></td>
-        <td>
-          <% if product.active? %>
-            <%= button_to "Deactivate", { action: "switch" }, method: :put, params: { id: product.id } %>
-          <% else %>
-            <%= button_to "Activate", { action: "switch" }, method: :put, params: { id: product.id } %>
-          <% end %>
-        </td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
       </tr>
     <% end %>
