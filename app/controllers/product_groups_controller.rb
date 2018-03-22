@@ -43,7 +43,7 @@ class ProductGroupsController < ApplicationController
     end
 
     def product_group_params
-      params.require(:product_group).permit(:company_id, :product_category_id, :name, :active)
+      params.require(:product_group).permit(:product_category_id, :name, :active)
     end
 
 end
