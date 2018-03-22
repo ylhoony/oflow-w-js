@@ -1,0 +1,2 @@
+class AccountAddressesController < ApplicationController
+end
