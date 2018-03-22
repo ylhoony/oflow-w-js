@@ -38,3 +38,9 @@
 <%= link_to 'Edit', edit_supplier_path(@supplier) %> |
 <%= link_to 'Delete', supplier_path(@supplier), method: :delete %> |
 <%= link_to 'Back', suppliers_path %>
+<br/>
+
+<%= link_to 'Show Supplier Addresses', supplier_account_addresses_path(@supplier) %> |
+<%= link_to 'New Supplier Address', new_supplier_account_address_path(@supplier) %>
+
+
