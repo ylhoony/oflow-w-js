@@ -5,5 +5,6 @@ class Account < ApplicationRecord
   belongs_to :currency
   belongs_to :payment_term
   belongs_to :warehouse
+  has_many :account_addresses
 
 end
