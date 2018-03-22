@@ -1,7 +1,7 @@
 class SuppliersController < ApplicationController
   before_action :require_signed_in?
   before_action :set_required_data, except: [:index, :destroy]
-  before_action :set_warehouse, only: [:show, :edit, :update, :destroy]
+  before_action :set_supplier, only: [:show, :edit, :update, :destroy]
 
 
   def index
@@ -9,13 +9,13 @@ class SuppliersController < ApplicationController
   end
 
   def new
-    @warehouse = Warehouse.new
+    @supplier = Supplier.new
   end
 
   def create
-    @warehouse = Warehouse.new(warehouse_params)
-    if @warehouse.save
-      redirect_to warehouses_path
+    @supplier = Supplier.new(supplier_params)
+    if @supplier.save
+      redirect_to suppliers_path
     else
       render :new
     end
@@ -30,28 +30,28 @@ class SuppliersController < ApplicationController
   end
 
   def update
-    if @warehouse.update(warehouse_params)
-      redirect_to warehouses_path
+    if @supplier.update(supplier_params)
+      redirect_to suppliers_path
     else
       render :new
     end
   end
 
   def destroy
-    @warehouse.delete
-    redirect_to warehouses_path
+    @supplier.delete
+    redirect_to suppliers_path
   end
 
   private
 
     def set_required_data
-      # @currencies = Currency.active_currencies
-      # @warehouse = Warehouse.active_warehouses(current_company)
-
+      @currencies = Currency.active_currencies
+      @warehouses = current_company.warehouses.where(active: true)
+      @payment_terms = current_company.payment_terms.where(active: true)
     end
 
-    def set_warehouse
-      @warehouse = Warehouse.find(params[:id])
+    def set_supplier
+      @supplier = Supplier.find(params[:id])
     end
 
     def supplier_params
