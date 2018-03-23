@@ -1,3 +1,3 @@
 class Supplier < Account
-  belongs_to :company
+  has_many :purchase_orders, foreign_key: "account_id"
 end

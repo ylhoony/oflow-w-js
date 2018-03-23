@@ -1,6 +1,4 @@
 class SalesOrder < AccountOrder
-  # belongs_to :account
-  # belongs_to :warehouse
   belongs_to :account_address
   belongs_to :customer, foreign_key: :account_id
   belongs_to :company_address
