@@ -1,6 +1,5 @@
 class SalesOrdersController < ApplicationController
   before_action :require_signed_in?
-  before_action :set_required_data, except: [:index, :destroy]
   before_action :set_sales_order, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -43,26 +42,19 @@ class SalesOrdersController < ApplicationController
 
   private
 
-    def set_required_data
-      @currencies = Currency.active_currencies
-      @warehouses = current_company.warehouses.where(active: true)
-      @payment_terms = current_company.payment_terms.where(active: true)
-    end
-
     def set_sales_order
       @sales_order = SalesOrder.find(params[:id])
     end
 
     def sales_order_params
       params.require(:sales_order).permit(
-        :company_id,
-        :name,
-        :currency_id,
-        :payment_term_id,
+        :company_address_id,
         :warehouse_id,
-        :tax_id_number,        
+        :account_id,
+        :account_address_id,
+        :reference,
         :comment,
-        :active)
+        :order_status_id)
     end
 
 end

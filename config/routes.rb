@@ -49,12 +49,12 @@ Rails.application.routes.draw do
 
   resources :customers do 
     resources :account_addresses
-    resources :sales_orders
+    # resources :sales_orders
   end
 
   resources :suppliers do
     resources :account_addresses
-    resources :purchase_orders
+    # resources :purchase_orders
   end
 
   resources :warehouses
