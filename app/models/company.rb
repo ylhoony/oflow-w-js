@@ -15,6 +15,9 @@ class Company < ApplicationRecord
   has_many :unit_of_measures
   has_many :warehouses
 
+  has_many :sales_orders, through: :customers
+  # has_many :account_orders, through: :suppliers, class_name: "PurchaseOrder"
+
   validates :name, presence: true
   validates :country_id, presence: true
   validates :currency_id, presence: true
