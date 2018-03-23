@@ -7,6 +7,7 @@ class Company < ApplicationRecord
   has_many :company_contacts
   has_many :employees
   has_many :freight_terms
+  has_many :inventories
   has_many :users, through: :employees
   has_many :payment_terms
   has_many :products
