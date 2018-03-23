@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.integer :product_group_id
       t.string :sku
       t.string :name
-      t.integer :price
+      t.decimal :price
       t.integer :unit_of_measure_id
 
       t.timestamps null: false
