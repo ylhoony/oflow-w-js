@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :account_orders
-  resources :products
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   root to: "nav_menu#index"
@@ -50,12 +48,20 @@ Rails.application.routes.draw do
 
   resources :customers do 
     resources :account_addresses
+    resources :sales_orders
   end
 
   resources :suppliers do
     resources :account_addresses
+    resources :purchase_orders
   end
 
   resources :warehouses
+
+  # resources :account_orders
+  resources :sales_orders
+  resources :purchase_orders
+
+  resources :products
   
 end
