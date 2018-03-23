@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 20180322223959) do
     t.integer "product_group_id"
     t.string "sku"
     t.string "name"
-    t.integer "price"
+    t.decimal "price"
     t.integer "unit_of_measure_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

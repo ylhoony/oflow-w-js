@@ -1,0 +1,2 @@
+class AccountOrdersController < ApplicationController
+end
