@@ -46,9 +46,9 @@
 <br>
 
 <% if @account.class == Customer %>
-  <%= link_to 'New Customer Address', customer_account_addresses_path(@account) %>
+  <%= link_to 'New Customer Address', new_customer_account_address_path(@account) %>
 <% elsif @account.class == Supplier %>
-  <%= link_to 'New Supplier Address', supplier_account_addresses_path(@account) %>
+  <%= link_to 'New Supplier Address', new_supplier_account_address_path(@account) %>
 <% end %>
 
 <br/>
