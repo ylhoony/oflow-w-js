@@ -1,0 +1,45 @@
+<%= form_with(model: sales_order, local: true) do |f| %>
+  <% if sales_order.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(sales_order.errors.count, "error") %> prohibited this sales_order from being saved:</h3>
+
+      <ul>
+      <% sales_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :company_id, value: current_company.id %>
+
+  <div class="field">
+    <%= f.label :sku, "Product SKU: " %>
+    <%= f.text_field :sku %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name, "Product Name: " %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :unit_of_measure_id, "Unit of Measure: " %>
+    <%= f.collection_select :unit_of_measure_id, active_uoms, :id, :name, prompt: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :product_group_id, "Product Group: " %>
+    <%= f.collection_select :product_group_id, active_product_groups, :id, :name_with_category, prompt: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price, "Sales Price: " %>
+    <%= f.number_field :price, step: 0.01 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
