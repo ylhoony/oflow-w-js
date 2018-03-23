@@ -1,0 +1,57 @@
+<%= form_with(model: sales_order, local: true) do |f| %>
+  <% if sales_order.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(sales_order.errors.count, "error") %> prohibited this sales_order from being saved:</h3>
+
+      <ul>
+      <% sales_order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :account_id, "Customer Account: " %>
+    <%= f.collection_select :account_id, active_customers, :id, :name, prompt: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :reference, "Order Reference: " %>
+    <%= f.text_field :reference %>
+  </div>
+
+  <div class="field">
+    <%= f.label :company_address_id, "Bill From: " %>
+    <%= f.collection_select :company_address_id, active_company_addresses, :id, :name, prompt: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :warehouse_id, "Ship From: " %>
+    <%= f.collection_select :warehouse_id, active_warehouses, :id, :name, prompt: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :account_address_id, "Ship To: " %>
+    <%= f.collection_select :account_address_id, customer_addresses_list, :id, :name_with_account, prompt: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :comment, "Comment: " %>
+    <%= f.text_field :comment %>
+  </div>
+
+  <% if current_page?(action: :new) %>
+    <%= f.hidden_field :order_status_id, value: 1 %>
+  <% elsif current_page?(action: :edit) %>
+    <div class="field">
+      <%= f.label :order_status_id, "Order Status: " %>
+      <%= f.collection_select :order_status_id, active_customers, :id, :name, prompt: true %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
