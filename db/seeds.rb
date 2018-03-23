@@ -31,3 +31,9 @@ payment_options = PaymentOption.create([{ name: "day(s) after invoice date", act
 company = Company.create(name: "Test Company", currency_id: 1, country_id: 1, active: true)
 company.employees.create(user_id: 1, job_title: "Director", admin: true, active: true)
 User.first.current_company = company
+
+
+
+
+
+order_statuses = OrderStatus.create([{ name: "Ordered"}, { name: "Received"}, {name: "Shipped"} ])
