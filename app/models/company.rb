@@ -16,7 +16,7 @@ class Company < ApplicationRecord
   has_many :warehouses
 
   has_many :sales_orders, through: :customers
-  # has_many :account_orders, through: :suppliers, class_name: "PurchaseOrder"
+  has_many :purchase_orders, through: :suppliers
 
   validates :name, presence: true
   validates :country_id, presence: true
