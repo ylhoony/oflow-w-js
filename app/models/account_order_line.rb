@@ -1,0 +1,2 @@
+class AccountOrderLine < ApplicationRecord
+end
