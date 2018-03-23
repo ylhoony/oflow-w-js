@@ -1,16 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Customers</h3>
+<h3>Sales Orders</h3>
 
 <table>
   <thead>
     <tr>
-      <th>Customer</th>
+      <th>Customer Account Name</th>
       <th>Reference Number</th>
-      <th>Payment Term</th>
-      <th>Ship From Warehouse</th>
+      <th>Bill From</th>
+      <th>Ship From</th>
+      <th>Ship To</th>
       <th>Comment</th>
-      <th>Active?</th>
+      <th>Order Status</th>
       <th></th>
     </tr>
   </thead>
@@ -18,12 +19,13 @@
   <tbody>
     <% @sales_orders.each do |sales_order| %>
       <tr>
-        <td><%= link_to sales_order.name, sales_order_path(sales_order) %></td>
-        <td><%= sales_order.currency.name %></td>
-        <td><%= sales_order.payment_term.name %></td>
+        <td><%= sales_order.customer.name %></td>
+        <td><%= sales_order.reference %></td>
+        <td><%= sales_order.company_address.name %></td>
         <td><%= sales_order.warehouse.name %></td>
+        <td><%= sales_order.account_address.company_name %></td>
         <td><%= sales_order.comment %></td>
-        <td><%= check_box "sales_order", "active", { checked: sales_order.active, disabled: true } %></td>
+        <td><%= sales_order.order_status.name %></td>
         <td><%= link_to 'Edit', edit_sales_order_path(sales_order) %></td>
       </tr>
     <% end %>

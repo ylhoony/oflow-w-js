@@ -11,32 +11,44 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :company_id, value: current_company.id %>
-
   <div class="field">
-    <%= f.label :sku, "Product SKU: " %>
-    <%= f.text_field :sku %>
+    <%= f.label :account_id, "Customer Account: " %>
+    <%= f.collection_select :account_id, active_customers, :id, :name, prompt: true %>
   </div>
 
   <div class="field">
-    <%= f.label :name, "Product Name: " %>
-    <%= f.text_field :name %>
+    <%= f.label :reference, "Order Reference: " %>
+    <%= f.text_field :reference %>
   </div>
 
   <div class="field">
-    <%= f.label :unit_of_measure_id, "Unit of Measure: " %>
-    <%= f.collection_select :unit_of_measure_id, active_uoms, :id, :name, prompt: true %>
+    <%= f.label :company_address_id, "Bill From: " %>
+    <%= f.collection_select :company_address_id, active_company_addresses, :id, :name, prompt: true %>
   </div>
 
   <div class="field">
-    <%= f.label :product_group_id, "Product Group: " %>
-    <%= f.collection_select :product_group_id, active_product_groups, :id, :name_with_category, prompt: true %>
+    <%= f.label :warehouse_id, "Ship From: " %>
+    <%= f.collection_select :warehouse_id, active_warehouses, :id, :name, prompt: true %>
   </div>
 
   <div class="field">
-    <%= f.label :price, "Sales Price: " %>
-    <%= f.number_field :price, step: 0.01 %>
+    <%= f.label :account_address_id, "Ship To: " %>
+    <%= f.collection_select :account_address_id, customer_addresses_list, :id, :name_with_account, prompt: true %>
   </div>
+
+  <div class="field">
+    <%= f.label :comment, "Comment: " %>
+    <%= f.text_field :comment %>
+  </div>
+
+  <% if current_page?(action: :new) %>
+    <%= f.hidden_field :order_status_id, value: 1 %>
+  <% elsif current_page?(action: :edit) %>
+    <div class="field">
+      <%= f.label :order_status_id, "Order Status: " %>
+      <%= f.collection_select :order_status_id, active_customers, :id, :name, prompt: true %>
+    </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit %>
