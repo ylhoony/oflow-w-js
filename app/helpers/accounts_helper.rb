@@ -4,4 +4,8 @@ module AccountsHelper
     current_company.customers.all
   end
 
+  def active_suppliers
+    current_company.suppliers.all
+  end
+
 end
