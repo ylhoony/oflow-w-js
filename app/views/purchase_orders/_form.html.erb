@@ -1,10 +1,10 @@
-<%= form_with(model: sales_order, local: true) do |f| %>
-  <% if sales_order.errors.any? %>
+<%= form_with(model: purchase_order, local: true) do |f| %>
+  <% if purchase_order.errors.any? %>
     <div id="error_explanation">
-      <h3><%= pluralize(sales_order.errors.count, "error") %> prohibited this sales_order from being saved:</h3>
+      <h3><%= pluralize(purchase_order.errors.count, "error") %> prohibited this purchase_order from being saved:</h3>
 
       <ul>
-      <% sales_order.errors.full_messages.each do |message| %>
+      <% purchase_order.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :account_id, "Customer Account: " %>
-    <%= f.collection_select :account_id, active_customers, :id, :name, prompt: true %>
+    <%= f.label :account_id, "Supplier Account: " %>
+    <%= f.collection_select :account_id, active_suppliers, :id, :name, prompt: true %>
   </div>
 
   <div class="field">
@@ -22,18 +22,18 @@
   </div>
 
   <div class="field">
-    <%= f.label :company_address_id, "Bill From: " %>
+    <%= f.label :company_address_id, "PO From: " %>
     <%= f.collection_select :company_address_id, active_company_addresses, :id, :name, prompt: true %>
   </div>
 
   <div class="field">
-    <%= f.label :warehouse_id, "Ship From: " %>
-    <%= f.collection_select :warehouse_id, active_warehouses, :id, :name, prompt: true %>
+    <%= f.label :account_address_id, "Purchase Order To: " %>
+    <%= f.collection_select :account_address_id, supplier_addresses_list, :id, :name_with_account, prompt: true %>
   </div>
 
   <div class="field">
-    <%= f.label :account_address_id, "Ship To: " %>
-    <%= f.collection_select :account_address_id, customer_addresses_list, :id, :name_with_account, prompt: true %>
+    <%= f.label :warehouse_id, "Ship To: " %>
+    <%= f.collection_select :warehouse_id, active_warehouses, :id, :name, prompt: true %>
   </div>
 
   <div class="field">

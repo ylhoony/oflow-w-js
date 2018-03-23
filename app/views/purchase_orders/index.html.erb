@@ -5,10 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>Customer Account Name</th>
+      <th>Supplier Account Name</th>
       <th>Reference Number</th>
-      <th>Bill From</th>
-      <th>Ship From</th>
+      <th>PO From</th>
+      <th>Purchase Order To</th>
       <th>Ship To</th>
       <th>Comment</th>
       <th>Order Status</th>
@@ -17,16 +17,16 @@
   </thead>
 
   <tbody>
-    <% @sales_orders.each do |sales_order| %>
+    <% @purchase_orders.each do |purchase_order| %>
       <tr>
-        <td><%= sales_order.customer.name %></td>
-        <td><%= sales_order.reference %></td>
-        <td><%= sales_order.company_address.name %></td>
-        <td><%= sales_order.warehouse.name %></td>
-        <td><%= sales_order.account_address.company_name %></td>
-        <td><%= sales_order.comment %></td>
-        <td><%= sales_order.order_status.name %></td>
-        <td><%= link_to 'Edit', edit_sales_order_path(sales_order) %></td>
+        <td><%= purchase_order.supplier.name %></td>
+        <td><%= purchase_order.reference %></td>
+        <td><%= purchase_order.company_address.name %></td>
+        <td><%= purchase_order.account_address.company_name %></td>
+        <td><%= purchase_order.warehouse.name %></td>
+        <td><%= purchase_order.comment %></td>
+        <td><%= purchase_order.order_status.name %></td>
+        <td><%= link_to 'Edit', edit_purchase_order_path(purchase_order) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Sales Order', new_sales_order_path %>
+<%= link_to 'New Sales Order', new_purchase_order_path %>
