@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Sales Orders</h3>
+<h3>Purchase Orders</h3>
 
 <table>
   <thead>
@@ -12,6 +12,7 @@
       <th>Ship To</th>
       <th>Comment</th>
       <th>Order Status</th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -26,6 +27,7 @@
         <td><%= purchase_order.warehouse.name %></td>
         <td><%= purchase_order.comment %></td>
         <td><%= purchase_order.order_status.name %></td>
+        <td><%= link_to 'View', purchase_order_path(purchase_order) %></td>
         <td><%= link_to 'Edit', edit_purchase_order_path(purchase_order) %></td>
       </tr>
     <% end %>
@@ -34,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Sales Order', new_purchase_order_path %>
+<%= link_to 'New Purchase Order', new_purchase_order_path %>

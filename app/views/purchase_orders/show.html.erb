@@ -1,0 +1,67 @@
+<h3>Purchase Orders</h3>
+
+<p><%= link_to "Edit PO", edit_purchase_order_path(@purchase_order) %> || <%= link_to "Delete PO", purchase_order_path(@purchase_order), method: :delete %></p>
+
+<h4>Purchase Order ID: <%= @purchase_order.id %></h4>
+<p>Order Reference Number: <%= @purchase_order.reference %></p>
+<p>PO Status: <%= @purchase_order.order_status.name %><br/></p>
+
+<h4>Purchase Order From: <%= @purchase_order.company_address.name %><br/></h4>
+<p>
+Address - <br/>
+<%= @purchase_order.company_address.name %><br/>
+<%= @purchase_order.company_address.address_line_1 %><br/>
+<%= @purchase_order.company_address.address_line_2 %><br/>
+<%= @purchase_order.company_address.city %>, <%= @purchase_order.company_address.state %><br/>
+<%= @purchase_order.company_address.country.name %> <%= @purchase_order.company_address.postal_code %> 
+</p>
+
+<h4>Purchase Order To: <%= @purchase_order.supplier.name %><br/></h4>
+<p>
+Address - <br/>
+<%= @purchase_order.account_address.company_name %><br/>
+<%= @purchase_order.account_address.address_line_1 %><br/>
+<%= @purchase_order.account_address.address_line_2 %><br/>
+<%= @purchase_order.account_address.city %>, <%= @purchase_order.account_address.state %><br/>
+<%= @purchase_order.account_address.country.name %> <%= @purchase_order.account_address.postal_code %> 
+</p>
+
+<h4>Ship To Warehouse:</h4>
+<p>
+<%= @purchase_order.warehouse.name %><br/>
+<%= @purchase_order.warehouse.address_line_1 %><br/>
+<%= @purchase_order.warehouse.address_line_2 %><br/>
+<%= @purchase_order.warehouse.city %>, <%= @purchase_order.warehouse.state %><br/>
+<%= @purchase_order.warehouse.country.name %> <%= @purchase_order.warehouse.postal_code %> 
+</p>
+
+<h4>Order Comment: <br/></h4>
+<p><%= @purchase_order.comment %><br/></p>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Product SKU</th>
+      <th>Product Name</th>
+      <th>Product Comment</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Line Amount</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @purchase_order.account_order_lines.each do |order_line| %>
+      <tr>
+        <td><%= order_line.product.sku %></td>
+        <td><%= order_line.product.name %></td>
+        <td><%= order_line.comment %></td>
+        <td><%= order_line.unit_price %></td>
+        <td><%= order_line.quantity %></td>
+        <td><%= order_line.line_amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

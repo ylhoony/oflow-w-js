@@ -13,7 +13,7 @@ class PurchaseOrdersController < ApplicationController
   def create
     @purchase_order = PurchaseOrder.new(purchase_order_params)
     if @purchase_order.save
-      redirect_to purchase_orders_path
+      redirect_to purchase_order_path(@purchase_order)
     else
       render :new
     end
@@ -29,7 +29,7 @@ class PurchaseOrdersController < ApplicationController
 
   def update
     if @purchase_order.update(purchase_order_params)
-      redirect_to purchase_orders_path
+      redirect_to purchase_order_path(@purchase_order)
     else
       render :new
     end
@@ -54,7 +54,13 @@ class PurchaseOrdersController < ApplicationController
         :account_address_id,
         :reference,
         :comment,
-        :order_status_id)
+        :order_status_id,
+        account_order_lines_attributes: [
+          :product_id,
+          :comment,
+          :unit_price,
+          :quantity]
+      )
     end
 
 end
