@@ -5,6 +5,10 @@ class Product < ApplicationRecord
   has_many :account_order_lines
   has_many :inventories
 
+  validates :name, presence: true
+  validates :sku, presence: true, uniqueness: true
+  validates :price, presence: true, numericality: { greater_than: 0 }
+
   def sku_with_name
     "#{sku} : #{name}"
   end
