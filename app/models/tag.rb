@@ -1,5 +1,5 @@
 class Tag < ApplicationRecord
   belongs_to :company
-  has_many :products_tags
-  has_many :products, through: :products_tags
+  has_many :product_tags
+  has_many :products, through: :product_tags
 end
