@@ -41,11 +41,7 @@ class ProductsController < ApplicationController
   end
 
   private
-
-    def set_countries
-      @countries = Country.active_countries
-    end
-
+  
     def set_product
       @product = Product.find(params[:id])
     end
