@@ -11,7 +11,6 @@ class NavMenuController < ApplicationController
 
   def dashboard
     current_user.current_company = Company.find(params[:id]) if params[:id]
-    # redirect_to root_path
   end
 
   def demand

@@ -4,5 +4,4 @@ class AccountOrder < ApplicationRecord
 
   belongs_to :warehouse
   has_many :account_order_lines
-  # belongs_to :company_address
 end
