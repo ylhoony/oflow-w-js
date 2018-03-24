@@ -4,6 +4,8 @@ class Product < ApplicationRecord
   belongs_to :unit_of_measure
   has_many :account_order_lines
   has_many :inventories
+  has_many :products_tags
+  has_many :tags, through: :products_tags
 
   validates :name, presence: true
   validates :sku, presence: true, uniqueness: true
