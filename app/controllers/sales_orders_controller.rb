@@ -29,6 +29,7 @@ class SalesOrdersController < ApplicationController
 
   def update
     if @sales_order.update(sales_order_params)
+      @sales_order.ship_so if @sales_order.order_status_id == 3
       redirect_to sales_orders_path
     else
       render :new
@@ -54,7 +55,13 @@ class SalesOrdersController < ApplicationController
         :account_address_id,
         :reference,
         :comment,
-        :order_status_id)
+        :order_status_id,
+        account_order_lines_attributes: [
+          :product_id,
+          :comment,
+          :unit_price,
+          :quantity]
+      )
     end
 
 end
