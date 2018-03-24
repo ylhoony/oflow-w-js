@@ -28,7 +28,6 @@ class ProductsController < ApplicationController
   end
 
   def update
-    # raise params.inspect
     if @product.update(product_params)
       redirect_to products_path
     else
@@ -58,7 +57,9 @@ class ProductsController < ApplicationController
         :sku,
         :name,
         :price,
-        :unit_of_measure_id)
+        :unit_of_measure_id,
+        tag_ids: [],
+        tags_attributes: [:name])
       end
 
 end
