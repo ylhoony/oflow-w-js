@@ -13,6 +13,7 @@ class Company < ApplicationRecord
   has_many :products
   has_many :product_categories
   has_many :product_groups, through: :product_categories
+  has_many :tags
   has_many :unit_of_measures
   has_many :warehouses
 
