@@ -29,6 +29,7 @@ class PurchaseOrdersController < ApplicationController
 
   def update
     if @purchase_order.update(purchase_order_params)
+      @purchase_order.receive_po if @purchase_order.order_status_id == 2
       redirect_to purchase_order_path(@purchase_order)
     else
       render :new
