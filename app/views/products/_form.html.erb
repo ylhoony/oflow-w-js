@@ -38,6 +38,18 @@
     <%= f.number_field :price, step: 0.01 %>
   </div>
 
+  <div class="field">
+    <%= f.label :tag_ids, "Tags: " %>
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+  </div>
+
+  <%= f.fields_for :tags, product.tags.build do |tags_fields| %>
+    <div class="field">
+      <%= f.label :name, "New Tag: " %>
+      <%= tags_fields.text_field :name %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
