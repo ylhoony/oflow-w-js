@@ -13,6 +13,7 @@
       <th>Comment</th>
       <th>Order Status</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -26,6 +27,7 @@
         <td><%= sales_order.account_address.company_name %></td>
         <td><%= sales_order.comment %></td>
         <td><%= sales_order.order_status.name %></td>
+        <td><%= link_to 'View', sales_order_path(sales_order) %></td>
         <td><%= link_to 'Edit', edit_sales_order_path(sales_order) %></td>
       </tr>
     <% end %>

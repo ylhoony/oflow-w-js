@@ -1,0 +1,59 @@
+<p><%= link_to "Edit SO", edit_sales_order_path(@sales_order) %> || <%= link_to "Delete SO", sales_order_path(@sales_order), method: :delete %></p>
+
+<h4>Sales Order ID: <%= @sales_order.id %></h4>
+<p>Order Reference Number: <%= @sales_order.reference %></p>
+<p>PO Status: <%= @sales_order.order_status.name %><br/></p>
+
+<h4>Sales Order To: <%= @sales_order.company_address.name %><br/></h4>
+<p>
+Address - <br/>
+<%= @sales_order.company_address.name %><br/>
+<%= @sales_order.company_address.address_line_1 %><br/>
+<%= @sales_order.company_address.address_line_2 %><br/>
+<%= @sales_order.company_address.city %>, <%= @sales_order.company_address.state %><br/>
+<%= @sales_order.company_address.country.name %> <%= @sales_order.company_address.postal_code %> 
+</p>
+
+<h4>Sales Order From: <%= @sales_order.customer.name %><br/></h4>
+<p>
+Address - <br/>
+<%= @sales_order.account_address.company_name %><br/>
+<%= @sales_order.account_address.address_line_1 %><br/>
+<%= @sales_order.account_address.address_line_2 %><br/>
+<%= @sales_order.account_address.city %>, <%= @sales_order.account_address.state %><br/>
+<%= @sales_order.account_address.country.name %> <%= @sales_order.account_address.postal_code %> 
+</p>
+
+<h4>Ship From Warehouse:</h4>
+<p>
+<%= @sales_order.warehouse.name %><br/>
+<%= @sales_order.warehouse.address_line_1 %><br/>
+<%= @sales_order.warehouse.address_line_2 %><br/>
+<%= @sales_order.warehouse.city %>, <%= @sales_order.warehouse.state %><br/>
+<%= @sales_order.warehouse.country.name %> <%= @sales_order.warehouse.postal_code %> 
+</p>
+
+<h4>Order Comment: <br/></h4>
+<p><%= @sales_order.comment %><br/></p>
+
+<table>
+
+  <tr>
+    <th>SKU</th>
+    <th>Product Name</th>
+    <th>Product Comment</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+  <% @sales_order.account_order_lines.each do |line| %>
+    
+    <tr>
+      <td><%= line.product.sku %></td>
+      <td><%= line.product.name %></td>
+      <td><%= line.comment %></td>
+      <td><%= line.quantity %></td>
+      <td><%= line.unit_price %></td>
+    </tr>
+  <% end %>
+
+</table>
