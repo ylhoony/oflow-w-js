@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
     if @company.save
       @company.employees.create(user_id: current_user.id, admin: true, active: true)
       current_user.current_company = @company
-      redirect_to dashboard_path
+      redirect_to nav_dashboard_path
     else
       render :new
     end

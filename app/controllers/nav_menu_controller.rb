@@ -3,14 +3,15 @@ class NavMenuController < ApplicationController
 
   def index
     if user_signed_in?
-      redirect_to nav_dashboard_path
+      current_company ? redirect_to(nav_dashboard_path) : redirect_to(companies_path)
     else
       redirect_to new_user_session_path
     end
   end
 
   def dashboard
-    
+    current_user.current_company = Company.find(params[:id]) if params[:id]
+    # redirect_to root_path
   end
 
   def demand
