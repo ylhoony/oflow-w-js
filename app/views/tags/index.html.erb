@@ -1,29 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Freight Terms</h3>
+<h3>Tags</h3>
 
 <table>
   <thead>
     <tr>
-      <th>Freight Name</th>
-      <th>Active?</th>
+      <th>Tag Name</th>
       <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @freight_terms.each do |freight_term| %>
+    <% @tags.each do |tag| %>
       <tr>
-        <td><%= freight_term.name %></td>
-        <td><%= check_box "freight_term", "active", { checked: freight_term.active, disabled: true } %></td>
-        <td>
-          <% if freight_term.active? %>
-            <%= button_to "Deactivate", { action: "switch" }, method: :put, params: { id: freight_term.id } %>
-          <% else %>
-            <%= button_to "Activate", { action: "switch" }, method: :put, params: { id: freight_term.id } %>
-          <% end %>
-        </td>
-        <td><%= link_to 'Edit', edit_freight_term_path(freight_term) %></td>
+        <td><%= tag.name %></td>
+        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Freight Term', new_freight_term_path %>
+<%= link_to 'New Tag', new_tag_path %>
