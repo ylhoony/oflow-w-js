@@ -1,3 +1,18 @@
+<h3>Inventories</h3>
+
+<% if !params[:warehouse].blank? %>
+  <% @inventories = current_company.inventories.where(warehouse_id: params[:warehouse]) %>
+<% end %>
+
+<div>
+  <h3>Filter posts:</h3>
+  <%= form_tag("/inventories", method: "get") do %>
+    <%= select_tag "warehouse", options_from_collection_for_select(active_warehouses, "id", "name"), include_blank: true %>
+    <%= submit_tag "Filter" %>
+  <% end %>
+</div>
+
+
 <table>
   <thead>
     <tr>
