@@ -32,8 +32,8 @@ company = Company.create(name: "Test Company", currency_id: 1, country_id: 1, ac
 company.employees.create(user_id: 1, job_title: "Director", admin: true, active: true)
 User.first.current_company = company
 
-Company.first.company_addresses.create([{ company_id: 1, name: "Test Company", attention: "Joe Brown", address_line_1: "4321 Marine Drive", address_line_2: "", city: "Blaine", state: "WA", country_id: "94383", postal_code: "943834", phone: "854843843843", email: "sales@test.com", fax: "548329843284", active: true }])
-Company.first.company_contacts.create([{ company_id: 1, first_name: "Galileo", last_name: "Nightmare", job_title: "Sales", email: "gn@test.com", phone: "328432843822", comment: "", active: true }])
+Company.first.company_addresses.create([{ name: "Test Company", attention: "Joe Brown", address_line_1: "4321 Marine Drive", address_line_2: "", city: "Blaine", state: "WA", country_id: 1, postal_code: "943834", phone: "854843843843", email: "sales@test.com", fax: "548329843284", active: true }])
+Company.first.company_contacts.create([{ first_name: "Galileo", last_name: "Nightmare", job_title: "Sales", email: "gn@test.com", phone: "328432843822", comment: "", active: true }])
 
 order_statuses = OrderStatus.create([{ name: "Ordered"}, { name: "Received"}, {name: "Shipped"} ])
 
@@ -44,11 +44,11 @@ product_categories = ProductCategory.create([{ company_id: 1, name: "Toys", acti
                                              { company_id: 1, name: "Cars", active: true },
                                              { company_id: 1, name: "Airplane", active: false }])
 
-product_groups = ProductGroup.create([{ company_id: 1, product_category_id: 1, name: "Lego", active: true },
-                                      { company_id: 1, product_category_id: 1, name: "Barbie", active: true },
-                                      { company_id: 1, product_category_id: 1, name: "Disney", active: false },
-                                      { company_id: 1, product_category_id: 2, name: "Sedan", active: true },
-                                      { company_id: 1, product_category_id: 2, name: "SUV", active: true }])
+product_groups = ProductGroup.create([{ product_category_id: 1, name: "Lego", active: true },
+                                      { product_category_id: 1, name: "Barbie", active: true },
+                                      { product_category_id: 1, name: "Disney", active: false },
+                                      { product_category_id: 2, name: "Sedan", active: true },
+                                      { product_category_id: 2, name: "SUV", active: true }])
 
 freight_terms = FreightTerm.create([{ company_id: 1, name: "FOB", active: true },
                                     { company_id: 1, name: "EXW", active: true },
@@ -80,7 +80,7 @@ uoms = UnitOfMeasure.create([{ company_id: 1, name: "Each", active: true }, { co
 
 
 products = Product.create([{ company_id: 1, product_group_id: 1, sku: "75823", name: "Bird Island Egg Heist", price: 39.99, unit_of_measure_id: 1 },
-                          { company_id: 1, product_group_id: 1, sku: "75822", name: "Piggy Plane Attack", price: 24.99, unit_of_measure_id: 1 }, ])
+                          { company_id: 1, product_group_id: 1, sku: "75822", name: "Piggy Plane Attack", price: 24.99, unit_of_measure_id: 1 },
                           { company_id: 1, product_group_id: 1, sku: "75202", name: "Defense of Crait™", price: 99.99, unit_of_measure_id: 1 },
                           { company_id: 1, product_group_id: 1, sku: "75201", name: "First Order AT-ST™", price: 49.99, unit_of_measure_id: 1 },
                           { company_id: 1, product_group_id: 2, sku: "136985876", name: "Barbie Fashionistas Dolls - Cheerful Check", price: 14.99, unit_of_measure_id: 1 },
