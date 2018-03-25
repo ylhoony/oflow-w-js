@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "report", to: "nav_menu#report", as: "nav_report"
   get "setup", to: "nav_menu#setup", as: "nav_setup"
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :companies
   resources :company_contacts
