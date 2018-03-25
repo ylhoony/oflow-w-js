@@ -17,7 +17,7 @@ class SalesOrder < AccountOrder
       if inventory.present?
         inventory.update(quantity: inventory.quantity - line.quantity, total_value: inventory.total_value - inventory.total_value / inventory.quantity * line.quantity )
       else
-        Inventory.create(company_id: customer.company_id, product_id: line.product.id, warehouse_id: warehouse_id, quantity: -(line.quantity), total_value: total_value - total_value / quantity * line.quantity )
+        Inventory.create(company_id: customer.company_id, product_id: line.product.id, warehouse_id: warehouse_id, quantity: -(line.quantity), total_value: 0 )
       end
     end
   end
