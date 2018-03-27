@@ -1,1 +1,27 @@
-sales by product report page
+<h3>Sales by Product</h3>
+
+<table>
+
+  <thead>
+    <tr>
+      <th>Product SKU</th>
+      <th>Product Name</th>
+      <th>Total Quantity</th>
+      <th>Total Sales Value</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sales.each do |line| %>
+      <tr>
+        <td><%= line.sku %></td>
+        <td><%= line.name %></td>
+        <td><%= line.total_quantity %></td>
+        <td><%= number_to_currency(line.total_sales) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+
