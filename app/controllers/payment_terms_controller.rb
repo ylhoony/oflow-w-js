@@ -1,5 +1,6 @@
 class PaymentTermsController < ApplicationController
   before_action :require_signed_in?
+  before_action :require_valid_access?, only: [:edit, :update]
   before_action :set_payment_options, only: [:new, :create, :edit, :update]
   before_action :set_payment_term, only: [:edit, :update]
 
@@ -39,6 +40,10 @@ class PaymentTermsController < ApplicationController
   end
 
   private
+
+    def require_valid_access?
+      redirect_to payment_terms_path unless current_company.payment_term_ids.include?(params[:id].to_i)
+    end
 
     def set_payment_options
       @payment_options = PaymentOption.active_payment_options
