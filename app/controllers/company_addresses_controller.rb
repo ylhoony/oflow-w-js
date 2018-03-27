@@ -1,6 +1,6 @@
 class CompanyAddressesController < ApplicationController
   before_action :require_signed_in?
-  before_action :set_countries, except: [:index, :destroy]
+  before_action :require_valid_access?, only: [:show, :edit, :update, :destroy]
   before_action :set_company_address, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -43,8 +43,8 @@ class CompanyAddressesController < ApplicationController
 
   private
 
-    def set_countries
-      @countries = Country.active_countries
+    def require_valid_access?
+      redirect_to company_addresses_path unless current_company.company_address_ids.include?(params[:id].to_i)
     end
 
     def set_company_address

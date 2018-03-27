@@ -45,7 +45,7 @@
 
   <div class="field">
     <%= f.label :country_id, "Country: " %>
-    <%= f.collection_select :country_id, @countries, :id, :name, prompt: true %><br/>
+    <%= f.collection_select :country_id, active_countries, :id, :name, prompt: true %><br/>
   </div>
 
   <div class="field">
