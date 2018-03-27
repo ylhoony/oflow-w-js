@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :require_signed_in?
+  before_action :require_valid_access?, only: [:edit, :update]
   before_action :set_users, only: [:new, :create, :edit, :update]
   before_action :set_employee, only: [:edit, :update]
 
@@ -42,6 +43,10 @@ class EmployeesController < ApplicationController
   end
 
   private
+
+    def require_valid_access?
+      redirect_to employees_path unless current_company.employee_ids.include?(params[:id].to_i)
+    end
 
     def set_employee
       @employee = Employee.find(params[:id])
