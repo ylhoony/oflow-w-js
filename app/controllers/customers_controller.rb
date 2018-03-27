@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :require_signed_in?
-  before_action :set_required_data, except: [:index, :destroy]
+  before_action :require_valid_access?, only: [:show, :edit, :update, :destroy]
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -43,10 +43,8 @@ class CustomersController < ApplicationController
 
   private
 
-    def set_required_data
-      @currencies = Currency.active_currencies
-      @warehouses = current_company.warehouses.where(active: true)
-      @payment_terms = current_company.payment_terms.where(active: true)
+    def require_valid_access?
+      redirect_to customers_path unless current_company.customer_ids.include?(params[:id].to_i)
     end
 
     def set_customer
