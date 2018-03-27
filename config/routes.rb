@@ -65,5 +65,7 @@ Rails.application.routes.draw do
   resources :account_order_lines
   resources :inventories
   resources :order_statuses
+
+  get "reports/sales_by_product", to: "reports#sales_by_product", as: "sales_by_product"
   
 end
