@@ -1,5 +1,6 @@
 class CompanyContactsController < ApplicationController
   before_action :require_signed_in?
+  before_action :require_valid_access?, only: [:show, :edit, :update, :destroy]
   before_action :set_company_contact, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -41,6 +42,10 @@ class CompanyContactsController < ApplicationController
   end
 
   private
+
+    def require_valid_access?
+      redirect_to company_contacts_path unless current_company.company_contact_ids.include?(params[:id].to_i)
+    end
 
     def set_company_contact
       @company_contact = CompanyContact.find(params[:id])
