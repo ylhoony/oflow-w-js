@@ -1,6 +1,6 @@
 class SuppliersController < ApplicationController
   before_action :require_signed_in?
-  # before_action :set_required_data, except: [:index, :destroy]
+  before_action :require_valid_access?, only: [:show, :edit, :update, :destroy]
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
 
 
@@ -43,6 +43,10 @@ class SuppliersController < ApplicationController
   end
 
   private
+
+    def require_valid_access?
+      redirect_to suppliers_path unless current_company.supplier_ids.include?(params[:id].to_i)
+    end
 
     def set_supplier
       @supplier = Supplier.find(params[:id])
