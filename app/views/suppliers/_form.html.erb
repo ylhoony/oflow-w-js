@@ -25,17 +25,17 @@
 
   <div class="field">
     <%= f.label :currency_id, "Transaction Currency: " %>
-    <%= f.collection_select :currency_id, @currencies, :id, :name, prompt: true %><br/>
+    <%= f.collection_select :currency_id, active_currencies, :id, :name, prompt: true %><br/>
   </div>
 
   <div class="field">
     <%= f.label :payment_term_id, "Payment Term: " %>
-    <%= f.collection_select :payment_term_id, @payment_terms, :id, :name, prompt: true %><br/>
+    <%= f.collection_select :payment_term_id, active_payment_terms, :id, :name, prompt: true %><br/>
   </div>
 
   <div class="field">
     <%= f.label :warehouse_id, "Default Ship To Warehouse: " %>
-    <%= f.collection_select :warehouse_id, @warehouses, :id, :name, prompt: true %><br/>
+    <%= f.collection_select :warehouse_id, active_warehouses, :id, :name, prompt: true %><br/>
   </div>
 
   <div class="field">

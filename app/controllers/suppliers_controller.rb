@@ -1,6 +1,6 @@
 class SuppliersController < ApplicationController
   before_action :require_signed_in?
-  before_action :set_required_data, except: [:index, :destroy]
+  # before_action :set_required_data, except: [:index, :destroy]
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
 
 
@@ -43,12 +43,6 @@ class SuppliersController < ApplicationController
   end
 
   private
-
-    def set_required_data
-      @currencies = Currency.active_currencies
-      @warehouses = current_company.warehouses.where(active: true)
-      @payment_terms = current_company.payment_terms.where(active: true)
-    end
 
     def set_supplier
       @supplier = Supplier.find(params[:id])
