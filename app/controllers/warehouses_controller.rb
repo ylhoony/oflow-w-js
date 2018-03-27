@@ -1,6 +1,6 @@
 class WarehousesController < ApplicationController
   before_action :require_signed_in?
-  before_action :set_countries, except: [:index, :destroy]
+  before_action :require_valid_access?, only: [:show, :edit, :update, :destroy]
   before_action :set_warehouse, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -21,7 +21,7 @@ class WarehousesController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def edit
@@ -43,8 +43,8 @@ class WarehousesController < ApplicationController
 
   private
 
-    def set_countries
-      @countries = Country.active_countries
+    def require_valid_access?
+      redirect_to warehouses_path unless current_company.warehouse_ids.include?(params[:id].to_i)
     end
 
     def set_warehouse
