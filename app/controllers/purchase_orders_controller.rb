@@ -1,5 +1,6 @@
 class PurchaseOrdersController < ApplicationController
   before_action :require_signed_in?
+  before_action :require_valid_access?, only: [:show, :edit, :update, :destroy]
   before_action :set_purchase_order, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -20,7 +21,7 @@ class PurchaseOrdersController < ApplicationController
   end
 
   def show
-    
+  
   end
 
   def edit
@@ -45,6 +46,10 @@ class PurchaseOrdersController < ApplicationController
 
     def set_purchase_order
       @purchase_order = PurchaseOrder.find(params[:id])
+    end
+
+    def require_valid_access?
+      redirect_to purchase_orders_path unless current_company.purchase_order_ids.include?(params[:id].to_i)
     end
 
     def purchase_order_params
