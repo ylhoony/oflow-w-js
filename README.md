@@ -1,24 +1,26 @@
-# README
+# Oflow
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Low level order/inventory management system that you can create supplier, customer, purchase order, and sales orders. 
+This application is created with Ruby on Rails 5.1. 
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Clone the git repository for installation.
+Then, run `bundle install` for gem installation.
 
-* System dependencies
+## Database creation
 
-* Configuration
+Run `rake db:migrate` to generate database.
+Run `rake db:seed` if you would like to generate demo data.
 
-* Database creation
+## Usage
 
-* Database initialization
+Run `rails s` to run the application.
 
-* How to run the test suite
+## Contributing
 
-* Services (job queues, cache servers, search engines, etc.)
+Bug reports and pull requests are welcome on GitHub at https://github.com/ylhoony/address-manager-sinatra-app. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-* Deployment instructions
+## License
 
-* ...
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
