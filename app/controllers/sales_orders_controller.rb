@@ -1,5 +1,6 @@
 class SalesOrdersController < ApplicationController
   before_action :require_signed_in?
+  before_action :require_valid_access?, only: [:show, :edit, :update, :destroy]
   before_action :set_sales_order, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -42,6 +43,10 @@ class SalesOrdersController < ApplicationController
   end
 
   private
+
+    def require_valid_access?
+      redirect_to sales_orders_path unless current_company.sales_order_ids.include?(params[:id].to_i)
+    end
 
     def set_sales_order
       @sales_order = SalesOrder.find(params[:id])
