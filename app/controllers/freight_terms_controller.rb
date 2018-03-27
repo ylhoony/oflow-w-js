@@ -1,5 +1,6 @@
 class FreightTermsController < ApplicationController
   before_action :require_signed_in?
+  before_action :require_valid_access?, only: [:edit, :update]
   before_action :set_freight_term, only: [:edit, :update]
 
   def index
@@ -37,6 +38,10 @@ class FreightTermsController < ApplicationController
   end
 
   private
+
+    def require_valid_access?
+      redirect_to freight_terms_path unless current_company.freight_term_ids.include?(params[:id].to_i)
+    end
 
     def set_freight_term
       @freight_term = FreightTerm.find(params[:id])

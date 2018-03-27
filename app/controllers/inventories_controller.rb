@@ -4,7 +4,6 @@ class InventoriesController < ApplicationController
   helper_method :params
 
   def index
-    # binding.pry
     @inventories = current_company.inventories.all
   end
 end
