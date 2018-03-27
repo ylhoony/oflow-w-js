@@ -1,9 +1,12 @@
 class ReportsController < ApplicationController
 
   def sales_by_product
-    @sales = SalesOrder.sales_by_product
-    # SalesOrder.joins(account_order_lines: :product).group(:sku)
+    @sales = SalesOrder.sales_by_product(current_company)
     render "sales_by_product"
   end
   
 end
+
+
+
+
