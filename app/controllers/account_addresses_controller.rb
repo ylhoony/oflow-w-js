@@ -1,5 +1,6 @@
 class AccountAddressesController < ApplicationController
   before_action :require_signed_in?
+  before_action :require_valid_access?
   before_action :set_account
   before_action :set_account_address, only: [:show, :edit, :update, :destroy]
 
@@ -22,7 +23,7 @@ class AccountAddressesController < ApplicationController
   end
 
   def show
-    binding.pry
+    
   end
 
   def edit
@@ -44,9 +45,13 @@ class AccountAddressesController < ApplicationController
 
   private
 
-    # def require_valid_access?
-    #   redirect_to purchase_orders_path unless current_company.purchase_order_ids.include?(params[:id].to_i)
-    # end
+    def require_valid_access?
+      if params[:customer_id]
+        redirect_to customers_path unless current_company.customer_ids.include?(params[:customer_id].to_i)
+      elsif params[:supplier_id]
+        redirect_to suppliers_path unless current_company.supplier_ids.include?(params[:supplier_id].to_i)
+      end
+    end
 
     def set_account
       if params[:customer_id].present?
