@@ -56,7 +56,7 @@ freight_terms = FreightTerm.create([{ company_id: 1, name: "FOB", active: true }
 
 
 
-tags = Tag.create([{ name: "Kids"}, { name: "Angry Birds" }, { name: "City" }, { name: "Movies" }, { name: "Science Fiction"} ])
+tags = Tag.create([{ company_id: 1, name: "Kids" }, { company_id: 1, name: "Angry Birds" }, { company_id: 1, name: "City" }, { company_id: 1, name: "Movies" }, { company_id: 1, name: "Science Fiction"} ])
 
 warehouses = Warehouse.create([{ company_id: 1, name: "Warehouse WA", attention: "Johnn Doe", address_line_1: "123 Broadway", address_line_2: "Unit 1", city: "Seattle", state: "WA", country_id: 1, postal_code: "12345", email: "wa@whse.co", phone: "123445223", fax: "21343112", active: true },
                                { company_id: 1, name: "Warehouse NY", attention: "Laura Jane", address_line_1: "4379 Broadway", address_line_2: "2135", city: "New York", state: "NY", country_id: 1, postal_code: "12345", email: "ny@whse.co", phone: "9873428532", fax: "624332532", active: true }])
