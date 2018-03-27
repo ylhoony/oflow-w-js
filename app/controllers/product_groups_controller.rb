@@ -1,5 +1,6 @@
 class ProductGroupsController < ApplicationController
   before_action :require_signed_in?
+  before_action :require_valid_access?, only: [:edit, :update]
   before_action :set_product_group, only: [:edit, :update]
 
   def index
@@ -37,6 +38,10 @@ class ProductGroupsController < ApplicationController
   end
 
   private
+
+    def require_valid_access?
+      redirect_to product_groups_path unless current_company.product_group_ids.include?(params[:id].to_i)
+    end
 
     def set_product_group
       @product_group = ProductGroup.find(params[:id])
