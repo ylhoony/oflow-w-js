@@ -1,5 +1,6 @@
 class UnitOfMeasuresController < ApplicationController
   before_action :require_signed_in?
+  before_action :require_valid_access?, only: [:edit, :update]
   before_action :set_unit_of_measure, only: [:edit, :update]
 
   def index
@@ -20,6 +21,7 @@ class UnitOfMeasuresController < ApplicationController
   end
 
   def edit
+    binding.pry
   end
 
   def update
@@ -38,6 +40,10 @@ class UnitOfMeasuresController < ApplicationController
 
   private
 
+    def require_valid_access?
+      redirect_to unit_of_measures_path unless current_company.unit_of_measure_ids.include?(params[:id].to_i)
+    end
+
     def set_unit_of_measure
       @unit_of_measure = UnitOfMeasure.find(params[:id])
     end
@@ -45,7 +51,5 @@ class UnitOfMeasuresController < ApplicationController
     def unit_of_measure_params
       params.require(:unit_of_measure).permit(:name, :company_id, :active)
     end
-
-
 
 end

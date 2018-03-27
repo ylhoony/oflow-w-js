@@ -22,6 +22,7 @@ class AccountAddressesController < ApplicationController
   end
 
   def show
+    binding.pry
   end
 
   def edit
@@ -42,6 +43,10 @@ class AccountAddressesController < ApplicationController
   end
 
   private
+
+    # def require_valid_access?
+    #   redirect_to purchase_orders_path unless current_company.purchase_order_ids.include?(params[:id].to_i)
+    # end
 
     def set_account
       if params[:customer_id].present?
