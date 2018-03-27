@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   before_action :require_signed_in?
+  before_action :require_valid_access?, only: [:edit, :update]
   before_action :set_tag, only: [:edit, :update]
 
   def index
@@ -31,6 +32,10 @@ class TagsController < ApplicationController
   end
 
   private
+
+    def require_valid_access?
+      redirect_to tags_path unless current_company.tag_ids.include?(params[:id].to_i)
+    end
 
     def set_tag
       @tag = Tag.find(params[:id])
