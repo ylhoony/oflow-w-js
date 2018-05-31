@@ -34,6 +34,7 @@ gem 'devise'
 gem 'dotenv-rails'
 
 gem 'omniauth-google-oauth2'
+gem 'active_model_serializers'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
