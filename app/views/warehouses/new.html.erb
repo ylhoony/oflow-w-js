@@ -1,5 +1,83 @@
 <h3>New Warehouse</h3>
 
-<%= render 'form', warehouse: @warehouse %>
+<%#= render 'form', warehouse: @warehouse %>
+
+<section id="warehouse-form">
+</section>
 
 <%= link_to 'Back', warehouses_path %>
+
+
+<script id="warehouse-form-template" type="text/x-handlebars-template">
+
+  <form class="new_warehouse" id="new_warehouse" action="/warehouses" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <div class="field">
+      <label for="warehouse_name">Warehouse Name: </label>
+      <input type="text" name="warehouse[name]" id="warehouse_name">
+    </div>
+
+    <div class="field">
+      <label for="warehouse_attention">Attention: </label>
+      <input type="text" name="warehouse[attention]" id="warehouse_attention">
+    </div>
+
+    <div class="field">
+      <label for="warehouse_address_line_1">Address Line 1: </label>
+      <input type="text" name="warehouse[address_line_1]" id="warehouse_address_line_1">
+    </div>
+
+    <div class="field">
+      <label for="warehouse_address_line_2">Address Line 2: </label>
+      <input type="text" name="warehouse[address_line_2]" id="warehouse_address_line_2">
+    </div>
+
+    <div class="field">
+      <label for="warehouse_city">City: </label>
+      <input type="text" name="warehouse[city]" id="warehouse_city">
+    </div>
+
+    <div class="field">
+      <label for="warehouse_state">State/Province: </label>
+      <input type="text" name="warehouse[state]" id="warehouse_state">
+    </div>
+
+    <div class="field">
+      <label for="warehouse_country_id">Country: </label>
+      <select name="warehouse[country_id]" id="warehouse_country_id">
+        <option value="">Please select</option>
+        {{#each countries}}
+        {{displayOption this}}
+        {{/each}}
+      </select><br>
+    </div>
+
+    <div class="field">
+      <label for="warehouse_postal_code">Postal Code: </label>
+      <input type="text" name="warehouse[postal_code]" id="warehouse_postal_code">
+    </div>
+
+    <div class="field">
+      <label for="warehouse_email">Email: </label>
+      <input type="text" name="warehouse[email]" id="warehouse_email">
+    </div>
+
+    <div class="field">
+      <label for="warehouse_phone">Phone: </label>
+      <input type="text" name="warehouse[phone]" id="warehouse_phone">
+    </div>
+
+    <div class="field">
+      <label for="warehouse_fax">Fax: </label>
+      <input type="text" name="warehouse[fax]" id="warehouse_fax">
+    </div>
+
+    <input value="true" type="hidden" name="warehouse[active]" id="warehouse_active"><br>
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Create Warehouse" data-disable-with="Create Warehouse">
+    </div>
+  </form>
+</script>

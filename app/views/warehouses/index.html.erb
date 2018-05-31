@@ -2,36 +2,44 @@
 
 <h3>Warehouses</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Warehouse Name</th>
-      <th>Attention</th>
-      <th>City</th>
-      <th>State/Province</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Active?</th>
-      <th></th>
-    </tr>
-  </thead>
+<section id="warehouse-list">
+</section>
 
-  <tbody>
-    <% @warehouses.each do |warehouse| %>
-      <tr>
-        <td><%= link_to warehouse.name, warehouse_path(warehouse) %></td>
-        <td><%= warehouse.attention %></td>
-        <td><%= warehouse.city %></td>
-        <td><%= warehouse.state %></td>
-        <td><%= warehouse.email %></td>
-        <td><%= warehouse.phone %></td>
-        <td><%= check_box "warehouse", "active", { checked: warehouse.active, disabled: true } %></td>
-        <td><%= link_to 'Edit', edit_warehouse_path(warehouse) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
 
 <br>
 
 <%= link_to 'New Warehouse', new_warehouse_path %>
+
+<script id="warehouses-index-template" type="text/x-handlebars-template">
+  <table>
+    <tr class="table-header">
+      <th>Warehouse Name</th>
+      <th>Contact</th>
+      <th>Address</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Email</th>
+      <th>Status</th>
+      <th></th>
+    </tr>
+    {{#each warehouses}}
+      <tr class="table-content">
+        <td class="td-center"><a href="/warehouses/{{id}}">{{name}}</a></td>
+        <td class="td-center">{{contact}}</td>
+        <td class="td-center">{{address1}}<br>{{address2}}</td>
+        <td class="td-center">{{state}}</td>
+        <td class="td-center">{{countryName}}</td>
+        <td class="td-center">{{email}}</td>
+        <td class="td-center">
+        {{#if status}}
+          <input type="checkbox" checked disabled>
+        {{else}}
+          <input type="checkbox" disabled>
+        {{/if}}
+        </td>
+        <td class="td-center"><a href="/warehouses/{{id}}/edit">Edit</a></td>
+      </tr>
+    {{/each}}
+  </table>
+</script>

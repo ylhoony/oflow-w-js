@@ -1,60 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Warehouse Name:</strong>
-  <%= @warehouse.name %>
-</p>
-
-<p>
-  <strong>Attention:</strong>
-  <%= @warehouse.attention %>
-</p>
-
-<p>
-  <strong>Address Line 1:</strong>
-  <%= @warehouse.address_line_1 %>
-</p>
-
-<p>
-  <strong>Address Line 2:</strong>
-  <%= @warehouse.address_line_2 %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @warehouse.city %>
-</p>
-
-<p>
-  <strong>State/Province:</strong>
-  <%= @warehouse.state %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @warehouse.country.name %>
-</p>
-
-<p>
-  <strong>Postal Code:</strong>
-  <%= @warehouse.postal_code %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @warehouse.email %>
-</p>
-
-<p>
-  <strong>Fax:</strong>
-  <%= @warehouse.fax %>
-</p>
-
-<p>
-  <strong>Active?:</strong>
-  <%= check_box "warehouse", "active", { checked: @warehouse.active, disabled: true } %>
-</p>
+<section id="warehouse-show">
+</section>
 
 <%= link_to 'Edit', edit_warehouse_path(@warehouse) %> |
 <%= link_to 'Delete', warehouse_path(@warehouse), method: :delete %> |
 <%= link_to 'Back', warehouses_path %>
+
+
+<script id="warehouse-show-template" type="text/x-handlebars-template">
+  <p>Name: {{name}}</p>
+  <p>Contact: {{contact}}</p>
+  <p>Address: <br>
+    {{address1}}, {{address2}}<br>
+    {{city}}, {{state}}<br>
+    {{countryName}} {{postalCode}}</p>
+  <p>Email: {{email}}</p>
+  <p>Phone: {{phone}}</p>
+  <p>Fax: {{fax}}</p>
+  <p>Status: 
+    {{#if status}}
+    <input type="checkbox" checked disabled>
+    {{else}}
+    <input type="checkbox" disabled>
+    {{/if}}
+  </p>
+</script>
