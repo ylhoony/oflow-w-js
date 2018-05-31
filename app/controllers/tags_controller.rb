@@ -16,11 +16,11 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = Tag.new(tag_params)
-    if @tag.save
-      redirect_to tags_path
-    else
-      render :new
+    @tag = current_company.tags.build(tag_params)
+    @tag.save
+    respond_to do |format|
+      format.html { redirect_to tags_path }
+      format.json { render json: @tag, status: 201 }
     end
   end
 
