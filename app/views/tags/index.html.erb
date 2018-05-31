@@ -2,33 +2,38 @@
 
 <h3>Tags</h3>
 
-<section id="new_tag">
+<section id="tag-header">
 </section>
 
-<table>
-  <thead>
-    <tr>
-      <th>Tag Name</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<section id="tags-list">
+</section>
 
-  <tbody>
-    <% @tags.each do |tag| %>
+<script id="tags-list-template" type="text/x-handlebars-template">
+  <table>
+    <thead>
       <tr>
-        <td><%= tag.name %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+        <th>Tag Name</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {{#each tags}}
+        <tr>
+          <td>{{name}}</td>
+          <td><a href="/tags/{{id}}/edit">Edit</a></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</script>
+
 
 <br>
 
 <%= link_to 'New Tag', new_tag_path, class: "new_tag" %>
 
 <script id="tag-form-template" type="text/x-handlebars-template">
-  <form action="/tags" accept-charset="UTF-8" method="post">
+  <form id="new_tag" action="/tags" accept-charset="UTF-8" method="post">
     <input name="utf8" type="hidden" value="✓">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
 
@@ -36,8 +41,6 @@
       <label for="tag_name">Tag Name: </label>
       <input type="text" name="tag[name]">
     </div>
-
-    <input value="1" type="hidden" name="tag[company_id]">
 
     <div class="actions">
       <input type="submit" name="commit" value="Create Tag" data-disable-with="Create Tag">
