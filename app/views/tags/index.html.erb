@@ -2,6 +2,9 @@
 
 <h3>Tags</h3>
 
+<section id="new_tag">
+</section>
+
 <table>
   <thead>
     <tr>
@@ -22,4 +25,22 @@
 
 <br>
 
-<%= link_to 'New Tag', new_tag_path %>
+<%= link_to 'New Tag', new_tag_path, class: "new_tag" %>
+
+<script id="tag-form-template" type="text/x-handlebars-template">
+  <form action="/tags" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <div class="field">
+      <label for="tag_name">Tag Name: </label>
+      <input type="text" name="tag[name]">
+    </div>
+
+    <input value="1" type="hidden" name="tag[company_id]">
+
+    <div class="actions">
+      <input type="submit" name="commit" value="Create Tag" data-disable-with="Create Tag">
+    </div>
+  </form>
+</script>
