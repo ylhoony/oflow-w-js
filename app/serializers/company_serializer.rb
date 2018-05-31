@@ -5,6 +5,7 @@ class CompanySerializer < ActiveModel::Serializer
   has_many :products
   has_many :tags
   has_many :unit_of_measures
+  has_many :warehouses
 
   attributes :id, :name, :active
 end
