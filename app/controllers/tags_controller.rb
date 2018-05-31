@@ -5,6 +5,10 @@ class TagsController < ApplicationController
 
   def index
     @tags = current_company.tags.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @tags, status: 201 }
+    end
   end
 
   def new
