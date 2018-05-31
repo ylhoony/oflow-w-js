@@ -5,27 +5,37 @@ class WarehousesController < ApplicationController
 
   def index
     @warehouses = current_company.warehouses.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @warehouses, status: 201 }
+    end
   end
 
   def new
-    @warehouse = Warehouse.new
+    
   end
 
   def create
-    @warehouse = Warehouse.new(warehouse_params)
-    if @warehouse.save
-      redirect_to warehouses_path
-    else
-      render :new
+    @warehouse = current_company.warehouses.build(warehouse_params)
+    @warehouse.save
+    respond_to do |format|
+      format.html { redirect_to warehouses_path }
+      format.json { render json: @warehouse, status: 201 }
     end
   end
 
   def show
-
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @warehouse, status: 201 }
+    end
   end
 
   def edit
-    
+    respond_to do |format|
+      format.html { render :edit }
+      format.json { render json: @warehouse, status: 201 }
+    end
   end
 
   def update
@@ -53,7 +63,6 @@ class WarehousesController < ApplicationController
 
     def warehouse_params
       params.require(:warehouse).permit(
-        :company_id,
         :name,
         :attention,
         :address_line_1,
