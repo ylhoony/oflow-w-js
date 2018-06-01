@@ -1,7 +1,7 @@
 class ProductGroupsController < ApplicationController
   before_action :require_signed_in?
   before_action :require_valid_access?, only: [:edit, :update]
-  before_action :set_product_group, only: [:edit, :update]
+  before_action :set_product_group, only: [:show, :edit, :update]
 
   def index
     @product_groups = current_company.product_groups.all
@@ -18,6 +18,12 @@ class ProductGroupsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    respond_to do |format|
+      format.json { render json: @product_group, status: 201 }
+    end 
   end
 
   def edit
