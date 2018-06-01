@@ -122,13 +122,24 @@ const submitWarehouseForm = (e) => {
 }
 
 const initWarehouseShow = () => {
-  ajaxData("get", window.location.pathname, {})
-    .done((res) => {
-      const warehouse = new Warehouse(res);
-      const warehouseShow = warehouse.renderWarehouse();
-      $("#warehouse-show").html(warehouseShow);
-    })
-    .fail((err) => {
-      console.log(err);
-    });
+  const pathname = window.location.pathname
+
+  fetch(pathname, {
+    method: "GET",
+    credentials: "same-origin",
+    headers: {
+      "Accept": "application/json",
+      "Content-type": "application/json"
+    }
+    // mode: "cors",
+    // cache: "default"
+  })
+  .then(res => res.json())
+  .then((json) => {
+    const warehouse = new Warehouse(json);
+    const warehouseShow = warehouse.renderWarehouse();
+    $("#warehouse-show").html(warehouseShow);
+  })
+  .catch(error => console.log(error))
+
 }
