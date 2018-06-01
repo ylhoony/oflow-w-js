@@ -1,43 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Product SKU:</strong>
-  <%= @product.sku %>
-</p>
-
-<p>
-  <strong>Product Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>Product UOM:</strong>
-  <%= @product.unit_of_measure.name %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency(@product.price) %>
-</p>
-
-<p>
-  <strong>Product Category:</strong>
-  <%= @product.product_group.product_category.name %>
-</p>
-
-<p>
-  <strong>Product Group:</strong>
-  <%= @product.product_group.name %>
-</p>
-
-<p>
-  <strong>Tags:</strong>
-  <% @product.tags.each do |tag| %>
-    <%= tag.name %>,
-  <% end %>
-</p>
-
+<section id="product-show">
+</section>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Delete', product_path(@product), method: :delete %> |
 <%= link_to 'Back', products_path %>
+
+<script id="product-show-template" type="text/x-handlebars-template">
+  <p>SKU: {{sku}}</p>
+  <p>Name: {{name}}</p>
+  <p>UOM: {{unitOfMeasure}}</p>
+  <p>Price: {{price}}</p>
+  <p>Product Category: {{productCategoryName}}</p>
+  <p>Product Group: {{productGroupName}}</p>
+  <p>Tags: {{#each tags}} {{name}} {{/each}}</p>
+</script>
